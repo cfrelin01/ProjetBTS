@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+        <style>html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}</style>
+    <h:head>
+        <title>Car management</title>
+    </h:head>
+    
+    <h:body style="background-image:url(images/back.png); background-size:cover; background-repeat: no-repeat" >   
+       
+      <ui:include src="/menu.xhtml"/>
+        
+        <h1 style="margin-top: 10px">Car management :</h1>
+        <h:form style="margin-bottom: 100px; margin-top: 50px; margin-left: 25%;margin-right: 33%" >     
+            <h:inputHidden value="#{carBean.car.idCar}"/>
+            <p:panelGrid id = "tableauForm" columns="4" >
+                
+             <f:facet name="header">
+                    Car
+             </f:facet>   
+            
+            <p:outputLabel value="Name: " />
+            <p:inputText value="#{carBean.car.name}" id="name" required="true" label="name"/>  
+            <p:outputLabel value="Registration: " />
+            <p:inputText value="#{carBean.car.reg}" id="reg" required="true" label="addrMac"/>  
+
+            
+            <f:facet name = "footer">
+                
+               <h:panelGroup style = "display:block; text-align:center">
+                   <p:commandButton id = "buttonFormulaire" value = "Edit" action="#{carBean.ajouter()}" ajax="false"/>
+                 
+               </h:panelGroup>
+                
+            </f:facet>
+            
+          </p:panelGrid>
+            
+        </h:form><br></br>
+        
+       
+        
+        <h:form>              
+            <p:dataTable value="#{carBean.listerCar}" var="c"  style = "text-align:center" paginator="true" rows="10">
+                <f:facet name="header">
+                    Car List
+                </f:facet>
+                <p:column  headerText="Name">
+                    <h:outputText value="#{c.name}" />
+                </p:column>
+                <p:column headerText="Registration">
+                    <h:outputText value="#{c.reg}" />
+                </p:column>
+               
+                <p:column headerText="Action" colspan="1" >
+                    <p:commandButton id = "buttonModifier"  action="#{carBean.modifier(c)}" ajax="false" icon="fa fa-pencil [&#xf040;]"/>
+                   <p:commandButton id = "buttonSupprimer" action="#{carBean.supprimer(c)}" ajax="false" icon="fa fa-trash [&#xf1f8;]"/>
+                </p:column>
+            </p:dataTable>
+                
+        </h:form>        
+
+    </h:body>
+</html>
+
+

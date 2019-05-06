@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:po="http://primefaces.org/babylon">
+    <style>html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+    </style>
+    
+
+    <ui:composition>
+
+        <p:growl id="messages" />
+
+
+        <h:form>    
+
+            <p:menubar >
+                <p:menuitem value="Home" url="dashboard.jsf" icon="fa fa-home" />
+
+
+
+                <p:submenu label="Management" icon="fa fa-cogs">
+                    <p:menuitem value="Activity" url="editActivity.jsf" icon="fa fa-area-chart" />
+                    <p:menuitem value="Sensor" url="editSensor.jsf" icon="fa fa-gear" />
+                    <p:menuitem value="Bike" url="editBike.jsf" icon="fa fa-bicycle"/>
+                    <p:menuitem value="Cyclist" url="editCyclist.jsf" icon="fa fa-user" />
+                    <p:menuitem value="Car" url="editCar.jsf" icon="fa fa-automobile"/>
+                    <p:menuitem value="µComputer" url="editComputer.jsf" icon="fa fa-desktop"/>
+                    <p:menuitem value="Course" url="#" icon="fa fa-map-marker"/>
+                </p:submenu>
+
+
+
+                <p:menuitem value="Cyclist Graphic" url="#" icon="fa fa-area-chart"/>
+
+
+
+
+                <f:facet name="options">
+                    <p:commandButton type="button" value="Logout" icon="fa fa-home" />
+                </f:facet>
+            </p:menubar>
+
+        </h:form>
+    </ui:composition>
+</html>

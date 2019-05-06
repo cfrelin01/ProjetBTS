@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+        <style>html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}</style>
+    <h:head>
+        <title>Sensor management</title>
+    </h:head>
+
+    <h:body style="background-image:url(images/back.png); background-size:cover; background-repeat: no-repeat">   
+
+        <ui:include src="/menu.xhtml"/>
+        <br></br>
+
+        <h1 style="margin-top: 10px">Sensor management :</h1>
+
+
+        <h:form id="formSensor" style="margin-bottom: 100px; margin-top: 50px; margin-left: 25%" >    
+           <h:inputHidden value="#{sensorBean.sensor.idSensor}"/>
+
+            <p:panelGrid id = "tableauForm" columns="4">
+                 <f:facet name="header">
+                    Sensor
+                </f:facet>
+                <p:outputLabel value="Name : " />
+                <p:inputText value="#{sensorBean.sensor.name}" id="name" required="true" label="name"/>  
+                <p:outputLabel value="Cadance and Speed :" />
+                <p:inputText value="#{sensorBean.sensor.numCadAndSpd}" id="numCadAndSpd" required="true" label="numCadAndSpd"/>
+                <p:outputLabel value="Power :" />
+                <p:inputText value="#{sensorBean.sensor.numPwr}" id="numPwr" required="true" label="numPwr"/>
+                <p:outputLabel value="Hrm :" />
+                <p:inputText value="#{sensorBean.sensor.numHrm}" id="numHrm" required="true" label="numHrm"/>
+                <f:facet name = "footer">
+                    <h:panelGroup style = "display:block; text-align:center">
+                        <p:commandButton id = "buttonFormulaire" value = "Edit" action="#{sensorBean.ajouter()}" ajax="true" update="messages formSensor"/>
+                    </h:panelGroup>
+                </f:facet>
+            </p:panelGrid>
+
+        </h:form><br/>
+
+
+
+        <!-- tableau des cyclistes -->
+        <h:form id="formTabSensor">   
+            <p:poll interval="1" update="formTabSensor" /> 
+            <p:dataTable value="#{sensorBean.listerSensor}" var="c"  style = "text-align:center" paginator="true" rows="10" id="tabCyclists">
+                <f:facet name="header">
+                    Sensor list
+                </f:facet>
+                <p:column  headerText="Libelle">
+                    <h:outputText value="#{c.name}" />
+                </p:column>
+                 <p:column headerText="Cad and Speed">
+                     <h:outputText value="#{c.numCadAndSpd}" />
+                </p:column>
+                <p:column headerText="Power">
+                    <h:outputText value="#{c.numPwr}" />
+                </p:column>
+                 <p:column headerText="Hrm">
+                     <h:outputText value="#{c.numHrm}" />
+                </p:column>
+             
+
+                <p:column headerText="Action" colspan="1" >
+                    <p:commandButton id = "buttonModifier"  action="#{sensorBean.modifier(c)}" ajax="false" icon="fa fa-pencil [&#xf040;]"/>&nbsp;&nbsp;
+                    <p:commandButton id = "buttonSupprimer" action="#{sensorBean.supprimer(c)}" ajax="false" icon="fa fa-trash [&#xf1f8;]"/>
+                </p:column>
+            </p:dataTable>
+
+        </h:form>        
+
+    </h:body>
+</html>

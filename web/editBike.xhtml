@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <style>html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}</style>
+    <h:head>
+        <title>Bike management</title>
+    </h:head>
+    <h:body style="background-image:url(images/back.png); background-size:cover; background-repeat: no-repeat" >   
+        <ui:include src="/menu.xhtml"/>
+        
+        
+        <h1 style="margin-top: 10px">Bike management :</h1>
+        
+        <h:form style="width:80%;margin-bottom: 100px; margin-top: 50px; margin-left: 25%;margin-right: 25%">     
+            
+            <h:inputHidden value="#{bikeBean.bike.idBike}"/>
+            
+            <p:panelGrid id="tableauForm" columns="4">
+                <f:facet name="header">
+                    Bike
+                </f:facet>
+
+                <p:outputLabel value="Serial Number : " />
+                <p:inputText value="#{bikeBean.bike.serialNum}" id="serialNum" required="true" label="serialNum"/>  
+                <p:outputLabel value="Type : " />
+                <p:selectOneMenu id="type" value="#{bikeBean.bike.typeBike}" style="width:125px">
+                    <f:selectItem itemLabel="Aero" itemValue="Aero" />
+                    <f:selectItem itemLabel="Time Trial" itemValue="Time Trial" />
+                    <f:selectItem itemLabel="Road" itemValue="Road" />
+                </p:selectOneMenu>
+
+                <p:outputLabel for="computer" value="µComputer:" />
+
+
+                <p:selectOneMenu id="computer" required="true" value="#{bikeBean.bike.computer.idComputer}">
+                    <f:selectItem itemLabel="Veuillez choisir un compteur" itemValue="" />
+                    <f:selectItems value="#{computerBean.listerComputerWithoutBike}" var="computer" itemLabel="#{computer.name}" itemValue="#{computer.idComputer}" />
+                </p:selectOneMenu>
+
+                <p:outputLabel  value="Sensors :" />
+
+
+                <p:selectOneMenu id="pwsensor" required="true" value="#{bikeBean.bike.sensor.idSensor}">
+                    <f:selectItem itemLabel="Veuillez choisir un compteur" itemValue="" />
+                    <f:selectItems value="#{sensorBean.listerSensor}" var="sensor" itemLabel="#{sensor.name}" itemValue="#{sensor.idSensor}" />
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Picture :" />
+
+                <p:fileUpload value="#{bikeBean.bike.picture}"  id="picture" required="true" label="picture" mode="simple" skinSimple="true"/>
+                
+                <f:facet name = "footer">
+                    <h:panelGroup style = "display:block; text-align:center">
+                        <p:commandButton id = "buttonFormulaire" value = "Valider" action="#{bikeBean.ajouter()}" ajax="false"/>
+                    </h:panelGroup>
+                </f:facet>
+                
+                <p:outputLabel value="&nbsp;" /><p:outputLabel value="&nbsp;" />
+                
+
+            </p:panelGrid>
+
+        </h:form>  
+
+        
+        
+        
+        <h:form>              
+            <p:dataTable value="#{bikeBean.listBike}" var="c"  style = "text-align:center" paginator="true" rows="10">
+                <f:facet name="header">
+                    Bike list
+                </f:facet>
+                <p:column  headerText="Serial Number">
+                    <h:outputText value="#{c.serialNum}" />
+                </p:column>
+                <p:column headerText="type">
+                    <h:outputText value="#{c.typeBike}" />
+                </p:column>
+                <p:column headerText="Computer">
+                    <h:outputText value="#{c.computer.name}" />
+                </p:column>
+                <p:column headerText="Sensors">
+                    <h:outputText value="#{c.sensor.name}" />
+                </p:column>
+                <p:column headerText="Picture">
+                    <p:graphicImage value="#{c.picture}"  />  
+                </p:column>
+                <p:column headerText="Action" colspan="2" >
+                    <p:commandButton id = "buttonModifier"  action="#{bikeBean.modifier(c)}" ajax="false" icon="fa fa-pencil [&#xf040;]"/>
+                    <p:commandButton id = "buttonSupprimer" action="#{bikeBean.supprimer(c)}" ajax="false" icon="fa fa-trash [&#xf1f8;]"/>
+                </p:column>
+            </p:dataTable>
+
+        </h:form>        
+
+
+    </h:body>
+</html>
+

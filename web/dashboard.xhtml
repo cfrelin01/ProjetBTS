@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <style>html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}</style>
+    <h:head>
+        <title>Formulaire</title>
+    </h:head>
+    <h:body style="background-image:url(images/back.png); background-size:cover; background-repeat: no-repeat" >     
+
+
+        <ui:include src="/menu.xhtml"/>
+
+
+        <h:form id="formComputer" style="float: left">
+            <p:carousel value="#{computerBean.listerComputer}" headerText="Computer" var="c"  itemStyle="height:350px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:250px" circular="true">
+                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+
+                    <h:outputText value="AddrMac:" />
+                    <h:outputText value="#{c.addrMac}" />
+
+                    <h:outputText value="Name:" />
+                    <h:outputText value="#{c.name}" />
+
+                    <h:outputText value="OnOffTime:" />
+                    <h:outputText value="#{c.onOffTime}" >
+                        <f:convertDateTime pattern="dd-MM-yyyy hh:mm:ss"/>
+                    </h:outputText>
+
+                    <h:outputText value="OnOff:" />
+                    <h:outputText value="#{c.onOff}" />
+                </p:panelGrid>
+                <p:commandButton id = "buttonModifier"  action="#{riderBean.modifier(c)}" ajax="false" icon="fa fa-pencil [&#xf040;]" value="Modifier" />
+                <p:commandButton id = "buttonSupprimer" action="#{riderBean.supprimer(c)}" ajax="false" icon="fa fa-trash [&#xf1f8;]" value="Supprimer"/>
+
+                <f:facet name="footer">
+                    In total there are...
+                </f:facet>
+            </p:carousel>
+        </h:form>
+
+
+
+
+        <h:form id="formCyclist" style="float: left">
+            <p:carousel value="#{cyclistBean.listeCyclists}" headerText="Cyclist" var="c"  itemStyle="height:350px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:250px" circular="true">
+                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+                        <h:graphicImage value="/imgcyclist/#{c.imgCyclist}" width="60" rendered="#{c.imgCyclist!=''}"/>
+                        <h:graphicImage value="/resources/img/anonymous.png" width="60" rendered="#{c.imgCyclist==''}"/> 
+
+                    </f:facet>
+
+                    <h:outputText value="Nom:" />
+                    <h:outputText value="#{c.lastName}" />
+
+                    <h:outputText value="Prenom:" />
+                    <h:outputText value="#{c.firstName}" />
+
+                    <h:outputText value="Date Naissance:" />
+                    <h:outputText value="#{c.dateBirth}" >
+                        <f:convertDateTime pattern="dd-MM-yyyy"/>
+                    </h:outputText>
+
+                    <h:outputText value="Taille:" />
+                    <h:outputText value="#{c.height}" />
+                </p:panelGrid>
+                <p:commandButton id = "buttonModifier"  action="#{riderBean.modifier(c)}" ajax="false" icon="fa fa-pencil [&#xf040;]" value="Modifier" />
+                <p:commandButton id = "buttonSupprimer" action="#{riderBean.supprimer(c)}" ajax="false" icon="fa fa-trash [&#xf1f8;]" value="Supprimer"/>
+
+                <f:facet name="footer">
+                    In total there are...
+                </f:facet>
+            </p:carousel>
+        </h:form>
+
+
+
+
+    </h:body>
+</html>
+

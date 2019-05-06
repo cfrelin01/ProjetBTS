@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:po="http://primefaces.org/babylon">
+    <style>html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}</style>
+
+
+    <h:head class="w3-container" >
+        <title>Activities management</title>
+    </h:head>
+
+    <h:body style="background-image:url(images/back.png); background-size:cover; background-repeat: no-repeat" >   
+
+        <ui:include src="/menu.xhtml"/>
+        <br/>
+
+
+        <h1 style="margin-top: 10px">Activities management :</h1>
+
+
+        <!-- tableau des cyclistes -->
+
+        <h:form id="formTabActivities">   
+            <p:poll interval="1" update="formTabActivities" /> 
+            <p:dataTable value="#{activityBean.listActivities}" var="a"  style = "text-align:center" paginator="true" rows="10" id="tabActivities" >
+                <f:facet name="header">
+                    Liste des activités
+                </f:facet>
+                <p:column  headerText="Activity">
+                    <h:outputText value="#{a.idActivity}" />
+                </p:column>
+                <p:column  headerText="Cyclist">
+                    <h:outputText value="#{a.cyclist.lastName}" /> <h:outputText value="#{a.cyclist.firstName}" />
+                </p:column>
+                <p:column headerText="Start">
+                    <h:outputText value="#{a.startTime}" >
+                        <f:convertDateTime pattern="dd-MM-yyyy hh:mm:ss"/>
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="Stop">
+                    <h:outputText value="#{a.stopTime}" >
+                        <f:convertDateTime pattern="dd-MM-yyyy hh:mm:ss"/>
+                    </h:outputText>
+                </p:column>
+                 <p:column headerText="Action" colspan="2" >
+                     <p:commandButton id="buttonDetail" action="#{activityBean.detailActivity(a)}" ajax="false" icon="fa fa-edit [&#xf1f8;]"/>
+                     <p:commandButton id = "buttonSupprimer" action="#{activityBean.supprimer(a)}" ajax="false" icon="fa fa-trash [&#xf1f8;]"/>
+                </p:column>
+            </p:dataTable>
+
+        </h:form>        
+
+    </h:body>
+</html>
+
