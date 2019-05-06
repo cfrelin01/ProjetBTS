@@ -81,7 +81,7 @@ public class DetailActivityBean implements Serializable {
         lineModelHrm = this.initLinearModelHrm();
         lineModelHrm.setTitle("Live Activity");
         lineModelHrm.setLegendPosition("ne");
-        lineModelHrm.setSeriesColors("FFFFFF");
+        lineModelHrm.setSeriesColors("4B4B43");
         Axis yAxis3 = lineModelHrm.getAxis(AxisType.Y);
         Axis xAxis3 = lineModelHrm.getAxis(AxisType.X);
 
