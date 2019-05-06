@@ -27,7 +27,7 @@
     <!--windows -->
     <context-param>
         <param-name>PATH_IMG_CYCLIST</param-name>
-        <param-value>/root</param-value>
+        <param-value>C:\</param-value>
     </context-param>
     
     
