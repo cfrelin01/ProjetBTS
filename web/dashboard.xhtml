@@ -49,8 +49,8 @@
             <p:carousel value="#{cyclistBean.listeCyclists}" headerText="Cyclist" var="c"  itemStyle="height:350px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:250px" circular="true">
                 <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                     <f:facet name="header">
-                        <h:graphicImage value="/imgcyclist/#{c.imgCyclist}" width="60" rendered="#{c.imgCyclist!=''}"/>
-                        <h:graphicImage value="/resources/img/anonymous.png" width="60" rendered="#{c.imgCyclist==''}"/> 
+                        <h:graphicImage value="/imgcyclist/#{c.imgCyclist}" width="200" rendered="#{c.imgCyclist!=''}"/>
+                        <h:graphicImage value="/resources/img/anonymous.png"  width="200" rendered="#{c.imgCyclist==''}"/> 
 
                     </f:facet>
 
