@@ -15,41 +15,13 @@
         <ui:include src="/menu.xhtml"/>
 
 
-        <h:form id="formComputer" style="float: left">
-            <p:carousel value="#{computerBean.listerComputer}" headerText="Computer" var="c"  itemStyle="height:350px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:250px" circular="true">
-                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-
-                    <h:outputText value="AddrMac:" />
-                    <h:outputText value="#{c.addrMac}" />
-
-                    <h:outputText value="Name:" />
-                    <h:outputText value="#{c.name}" />
-
-                    <h:outputText value="OnOffTime:" />
-                    <h:outputText value="#{c.onOffTime}" >
-                        <f:convertDateTime pattern="dd-MM-yyyy hh:mm:ss"/>
-                    </h:outputText>
-
-                    <h:outputText value="OnOff:" />
-                    <h:outputText value="#{c.onOff}" />
-                </p:panelGrid>
-                <p:commandButton id = "buttonModifier"  action="#{riderBean.modifier(c)}" ajax="false" icon="fa fa-pencil [&#xf040;]" value="Modifier" />
-                <p:commandButton id = "buttonSupprimer" action="#{riderBean.supprimer(c)}" ajax="false" icon="fa fa-trash [&#xf1f8;]" value="Supprimer"/>
-
-                <f:facet name="footer">
-                    In total there are...
-                </f:facet>
-            </p:carousel>
-        </h:form>
 
 
-
-
-        <h:form id="formCyclist" style="float: left">
-            <p:carousel value="#{cyclistBean.listeCyclists}" headerText="Cyclist" var="c"  itemStyle="height:350px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:250px" circular="true">
+        <h:form id="formCyclist">
+            <p:carousel value="#{cyclistBean.listeCyclists}" headerText="Cyclist " var="c"  style="margin-top: 50px" itemStyle="text-align:center" responsive="true">
                 <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                     <f:facet name="header">
-                        <h:graphicImage value="/imgcyclist/#{c.imgCyclist}" width="200" rendered="#{c.imgCyclist!=''}"/>
+                        <h:graphicImage value="/imgcyclist/#{c.imgCyclist}" width="350" rendered="#{c.imgCyclist!=''}"/>
                         <h:graphicImage value="/resources/img/anonymous.png"  width="200" rendered="#{c.imgCyclist==''}"/> 
 
                     </f:facet>
@@ -65,15 +37,31 @@
                         <f:convertDateTime pattern="dd-MM-yyyy"/>
                     </h:outputText>
 
-                    <h:outputText value="Taille:" />
-                    <h:outputText value="#{c.height}" />
                 </p:panelGrid>
-                <p:commandButton id = "buttonModifier"  action="#{riderBean.modifier(c)}" ajax="false" icon="fa fa-pencil [&#xf040;]" value="Modifier" />
-                <p:commandButton id = "buttonSupprimer" action="#{riderBean.supprimer(c)}" ajax="false" icon="fa fa-trash [&#xf1f8;]" value="Supprimer"/>
+            </p:carousel>
+        </h:form>
+        
+        <h:form id="formComputer">
+            <p:carousel value="#{computerBean.listerComputer}" headerText="Computer " var="c"  style="margin-top: 50px" itemStyle="text-align:center" responsive="true">
+                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+                        
+                        <h:graphicImage value="/resources/img/sensor.png"  width="100"/> 
 
-                <f:facet name="footer">
-                    In total there are...
-                </f:facet>
+                    </f:facet>
+
+                    <h:outputText value="addrMac:" />
+                    <h:outputText value="#{c.addrMac}" />
+
+                    <h:outputText value="Sim:" />
+                    <h:outputText value="#{c.sim}" />
+
+                    <h:outputText value="onOffTime:" />
+                    <h:outputText value="#{c.onOffTime}" >
+                        <f:convertDateTime pattern="dd-MM-yyyy"/>
+                    </h:outputText>
+
+                </p:panelGrid>
             </p:carousel>
         </h:form>
 
