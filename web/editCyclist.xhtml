@@ -49,8 +49,41 @@
                 <p:outputLabel value="Bike:" />
                 <p:selectOneMenu id="bikechoice" required="true" value="#{cyclistBean.cyclist.bike.idBike}">
                     <f:selectItem itemLabel="Veuillez choisir un vélo" itemValue="" />
-                    <f:selectItems value="#{bikeBean.listBike}" var="bike" itemLabel="#{bike.serialNum}(#{bike.typeBike})" itemValue="#{bike.idBike}" />
+                    <f:selectItems value="#{bikeBean.listBike}" var="bike" itemLabel="#{bike.serialNum}(#{bike.typeBike})" itemValue="#{bike.idBike}" />                  
                 </p:selectOneMenu>
+                
+                <p:outputLabel value="PMA : " />
+                <p:inputText value="#{cyclistBean.cyclist.PMA}" id="Pma" required="true" label="Pma"/> 
+                
+                <p:outputLabel value="I1 Min: " />
+                <p:inputText value="#{cyclistBean.cyclist.i1Min}" id="i1Min" required="true" label="i1Min"/> 
+                
+                <p:outputLabel value="I1 Max: " />
+                <p:inputText value="#{cyclistBean.cyclist.i1Max}" id="i1Max" required="true" label="i1Max"/>
+                
+                <p:outputLabel value="I2 Min: " />
+                <p:inputText value="#{cyclistBean.cyclist.i2Min}" id="i2Min" required="true" label="i2Min"/>
+                
+                <p:outputLabel value="I2 Max: " />
+                <p:inputText value="#{cyclistBean.cyclist.i2Max}" id="i2Max" required="true" label="i2Max"/>
+                
+                <p:outputLabel value="I3 Min: " />
+                <p:inputText value="#{cyclistBean.cyclist.i3Min}" id="i3Min" required="true" label="i3Min"/>
+                
+                <p:outputLabel value="I3 Max: " />
+                <p:inputText value="#{cyclistBean.cyclist.i3Max}" id="i3Max" required="true" label="i3Max"/>
+                
+                <p:outputLabel value="I4 Min: " />
+                <p:inputText value="#{cyclistBean.cyclist.i4Min}" id="i4Min" required="true" label="i4Min"/>
+                
+                <p:outputLabel value="I4 Max: " />
+                <p:inputText value="#{cyclistBean.cyclist.i4Max}" id="i4Max" required="true" label="i4Max"/>
+                
+                <p:outputLabel value="I5 Min: " />
+                <p:inputText value="#{cyclistBean.cyclist.i5Min}" id="i5Min" required="true" label="i5Min"/>
+                
+                <p:outputLabel value="I5 Max: " />
+                <p:inputText value="#{cyclistBean.cyclist.i5Max}" id="i5Max" required="true" label="i5Max"/>
 
                 <p:outputLabel value="&nbsp;" />
                 <p:outputLabel value="&nbsp;" />   
@@ -94,6 +127,20 @@
                 </p:column>
                 <p:column headerText="weight">
                     <h:outputText value="#{c.weight}(kg)" />
+                </p:column>
+                
+                <p:column headerText="Pma">
+                    <h:outputText value="Pma(#{c.PMA}) " />
+                    <br></br>
+                    <h:outputText value="I1(#{c.i1Min} / #{c.i1Max})" />
+                    <br></br>
+                    <h:outputText value="I2(#{c.i2Min} / #{c.i2Max})" />
+                    <br></br>
+                    <h:outputText value="I3(#{c.i3Min} / #{c.i3Max})" />
+                    <br></br>
+                    <h:outputText value="I4(#{c.i4Min} / #{c.i4Max})" />
+                    <br></br>
+                    <h:outputText value="I1(#{c.i5Min} / #{c.i5Max})" />
                 </p:column>
                 <p:column headerText="bike">
                     <h:outputText value="#{c.bike.serialNum} (#{c.bike.typeBike})" />
