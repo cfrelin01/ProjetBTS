@@ -3,8 +3,8 @@
   <Resource id="jdbc-jsf" type="javax.sql.DataSource">
     JdbcDriver = com.mysql.jdbc.Driver
     JdbcUrl = jdbc:mysql://localhost:3306/jsf
-    UserName = jsf
-    Password = jsf
+    UserName =jsf
+    Password =jsf
   </Resource>
 </resources>
 
