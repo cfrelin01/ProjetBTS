@@ -192,7 +192,6 @@ public class DetailActivityBean implements Serializable {
         //format de la date 
         DateAxis axis = new DateAxis("Time");
         axis.setTickAngle(-70);
-        //axis.set
         axis.setMin(minAxis);
         axis.setMax(maxAxis);
 
