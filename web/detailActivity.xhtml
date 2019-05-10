@@ -22,96 +22,24 @@
         <h1 style="margin-top: 10px">Activities management :</h1>
 
         <!-- detail des activites -->
-        <p:panelGrid id = "tableauForm"  columns="6" >
-          <h:form style="margin-bottom: 50px; margin-top: 100px; margin-left: 15%; margin-right: 15%">
-                <h:panelGrid id = "Speed"  columns="1" >
-                <p:dataTable value="2" style="text-align: center" rows="5" >
-                <f:facet name="header" >
-                    SPEED :
-                </f:facet>
-                <p:column>
-                  <h:outputLabel value="MAX SPEED:" />
-                  <br></br> <br></br> 
-                  <p:inputText size="10"  />
-                </p:column>
-                <br></br>
-                <p:column>
-                    <h:outputLabel value="AVG SPEED:"/>
-                  <br></br> 
-                  <br></br> 
-                  <p:inputText size="10"/>
-                </p:column>
-           </p:dataTable>
-                </h:panelGrid>
-        </h:form> 
-        
-        
-             
-              <h:panelGrid id = "CadenceBOX" columns="1" >
-            <p:dataTable value="2" style = "text-align:center"  rows="5">
+     
+        <h:form>              
+            <p:dataTable value="#{detailActivityBean.listDataActivities}" var="c"  style = "text-align:center" paginator="true" rows="10">
                 <f:facet name="header">
-                    CADENCE :
+                    Car List
                 </f:facet>
-                <p:column>
-                  <h:outputLabel value="MAX CADENCE:"/>
-                  <br></br> <br></br> 
-                   <p:inputText size="10"/>
+                <p:column  headerText="speed">
+                    <h:outputText value="#{c.speed}" />
                 </p:column>
-                <br></br>
-                <p:column>
-                  <h:outputLabel value="AVG CADENCE:"/>
-                  <br></br> <br></br> 
-                   <p:inputText size="10"/>
+                <p:column headerText="hrm">
+                    <h:outputText value="#{c.hrm}" />
                 </p:column>
-           </p:dataTable>
-                  </h:panelGrid>
-      
-        
-        
-        <h:form style="margin-bottom: 100px; margin-top: 100px; margin-left: 15%; margin-right: 15%">
-             <h:panelGrid id = "Power" columns="1" >
-            <p:dataTable value="2" style = "text-align:center"  rows="5">
-                <f:facet  name="header">
-                    POWER :
-                </f:facet>
-                <p:column>
-                  <h:outputLabel value="MAX POWER:"/>
-                  <br></br> <br></br> 
-                   <p:inputText size="10"/>
-                </p:column> 
-                <br></br>
-                <p:column>
-                  <h:outputLabel value="AVG POWER:"/>
-                  <br></br> <br></br> 
-                   <p:inputText size="10"/>
-                </p:column>
-           </p:dataTable>
-                 </h:panelGrid>
-        </h:form>  
-        
-        
-         <h:form style="margin-bottom: 100px; margin-top: 100px; margin-left: 15%; margin-right: 15%">
-            <h:panelGrid id = "HRM" columns="1" >
-            <p:dataTable value="2" style = "text-align:center"  rows="5" >
-                <f:facet  name="header">
-                   HRM :
-                </f:facet>
-                <p:column>
-                    <h:outputLabel  value="MAX HRM:" />
-                  <br></br> <br></br> 
-                   <p:inputText size="10"/>
-                </p:column>
-                <br></br>
-                <p:column>
-                  <h:outputLabel value="AVG HRM:" />
-                  <br></br> <br></br> 
-                   <p:inputText size="10"/>
-                </p:column>
-           </p:dataTable>
-                </h:panelGrid>
-                 </h:form> 
-        
-        </p:panelGrid>
+               
+              
+            </p:dataTable>
+                
+        </h:form>        
+          
 
         <h:form id="Power">
             <p:poll interval="1" update="Power" />
