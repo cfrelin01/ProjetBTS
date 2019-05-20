@@ -65,21 +65,21 @@ public class DetailActivityBean implements Serializable {
 
 //charger les graphiques dans la base de données
         lineModel = this.initLinearModel();
-        lineModel.setTitle("Live Activity");
+        lineModel.setTitle("Power");
         lineModel.setLegendPosition("ne");
         lineModel.setSeriesColors("4E3ED2");
         Axis yAxis = lineModel.getAxis(AxisType.Y);
         Axis xAxis = lineModel.getAxis(AxisType.X);
 
         lineModelCad = this.initLinearModelCad();
-        lineModelCad.setTitle("Live Activity");
+        lineModelCad.setTitle("Cadence");
         lineModelCad.setLegendPosition("ne");
         lineModelCad.setSeriesColors("E13A18");
         Axis yAxis2 = lineModelCad.getAxis(AxisType.Y);
         Axis xAxis2 = lineModelCad.getAxis(AxisType.X);
         
         lineModelHrm = this.initLinearModelHrm();
-        lineModelHrm.setTitle("Live Activity");
+        lineModelHrm.setTitle("Hrm");
         lineModelHrm.setLegendPosition("ne");
         lineModelHrm.setSeriesColors("4B4B43");
         Axis yAxis3 = lineModelHrm.getAxis(AxisType.Y);
