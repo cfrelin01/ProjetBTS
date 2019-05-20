@@ -59,6 +59,8 @@ public class ActivityBean implements Serializable {
         return query.getResultList();
     } 
     
+   
+    
     public void supprimer(Activity a) {
         try {
             utx.begin();

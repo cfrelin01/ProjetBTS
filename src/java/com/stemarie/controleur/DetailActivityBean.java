@@ -47,6 +47,12 @@ public class DetailActivityBean implements Serializable {
     private LineChartModel lineModelCad;
     private LineChartModel lineModelHrm;
     
+    //dernieres valeurs live
+    private String maxSpeed ; 
+        
+        
+    
+    
 
     //injecter le controleur d'activite pour recuperer l'activite en cours
     @Inject
@@ -99,6 +105,12 @@ public class DetailActivityBean implements Serializable {
 
         //remplir le graphique
         List<DataActivity> listeDataActivities = this.activityBean.getListDataActivities();
+       
+        
+        
+        
+        
+        
 
         SimpleDateFormat sm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         // myDate is the java.util.Date in yyyy-mm-dd format
@@ -301,5 +313,22 @@ public class DetailActivityBean implements Serializable {
     public void setActivityBean(ActivityBean activityBean) {
         this.activityBean = activityBean;
     }
+
+    public String getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    public void setMaxSpeed(String maxSpeed) {
+        
+        List<DataActivity> listeDataActivities = this.activityBean.getListDataActivities();
+        DataActivity lastActivity=listeDataActivities.get(listeDataActivities.size());
+        
+        this.maxSpeed=lastActivity.getSpeed();;
+    }
+
+    
+    
+    
+    
 
 }
