@@ -46,6 +46,10 @@
                         <f:convertDateTime pattern="dd-MM-yyyy hh:mm:ss"/>
                     </h:outputText>
                 </p:column>
+                <p:column headerText="online">
+                    <h:graphicImage value="/resources/img/online-icon.jpg"  width="50" rendered="#{a.cyclist.onLine==true}"/> 
+                        <h:graphicImage value="/resources/img/offline-icon.jpg"  width="50" rendered="#{a.cyclist.onLine==false}"/> 
+                </p:column>
                  <p:column headerText="Action" colspan="2" >
                      <p:commandButton id="buttonDetail" action="#{activityBean.detailActivity(a)}" ajax="false" icon="fa fa-edit [&#xf1f8;]"/>
                      <p:commandButton id = "buttonSupprimer" action="#{activityBean.supprimer(a)}" ajax="false" icon="fa fa-trash [&#xf1f8;]"/>

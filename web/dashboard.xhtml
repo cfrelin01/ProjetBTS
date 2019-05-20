@@ -70,6 +70,13 @@
             <p:carousel value="#{activityBean.listActivities}" headerText="Activities " var="c"  style="margin-top: 50px" itemStyle="text-align:center" responsive="true">
                 <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                     
+                    <f:facet name="header">
+                        
+                        <h:graphicImage value="/resources/img/online-icon.jpg"  width="100" rendered="#{c.cyclist.onLine==true}"/> 
+                        <h:graphicImage value="/resources/img/offline-icon.jpg"  width="100" rendered="#{c.cyclist.onLine==false}"/> 
+
+                    </f:facet>
+                    
 
                     <h:outputText value="Nom:" />
                     <h:outputText value="#{c.cyclist.firstName} #{c.cyclist.lastName} " />
@@ -83,6 +90,10 @@
                     <h:outputText value="#{c.stopTime}" >
                         <f:convertDateTime pattern="dd-MM-yyyy hh:mm:ss"/>
                     </h:outputText>
+                    
+                    <p:commandButton id="buttonDetail" action="#{activityBean.detailActivity(c)}" ajax="false" icon="fa fa-edit [&#xf1f8;]"/>
+                    <p:commandButton id = "buttonSupprimer" action="#{activityBean.supprimer(a)}" ajax="false" icon="fa fa-trash [&#xf1f8;]"/>
+                    
 
                 </p:panelGrid>
             </p:carousel>
