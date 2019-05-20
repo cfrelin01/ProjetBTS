@@ -95,15 +95,14 @@
                     maxZoom: 20
                 }).addTo(macarte);
                 var marker = L.marker([lat, lon]).addTo(macarte)
-                .bindPopup('Une jolie popup.<br></br> Facilement personnalisable.')
-                .openPopup();
+                marker.bindPopup('Lons Le Saunier ');
         
                 var polygon = L.polygon([
                     [46.6667, 5.5833],
                     [46.6833, 5.6667],
                     [46.65, 5.7667]
                     ]).addTo(macarte);
-                    polygon.bindPopup("I am a polygon.");
+                    polygon.bindPopup("Course entre Perrigny, Doucier et Crançot :");
             }
 			window.onload = function(){
 				// Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
