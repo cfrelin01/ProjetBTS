@@ -145,6 +145,10 @@
                 <p:column headerText="bike">
                     <h:outputText value="#{c.bike.serialNum} (#{c.bike.typeBike})" />
                 </p:column>
+                 <p:column headerText="online">
+                    <h:graphicImage value="/resources/img/online-icon.jpg"  width="50" rendered="#{c.onLine==true}"/> 
+                    <h:graphicImage value="/resources/img/offline-icon.jpg"  width="50" rendered="#{c.onLine==false}"/> 
+                </p:column>
 
 
                 <p:column headerText="Action" colspan="1" >
