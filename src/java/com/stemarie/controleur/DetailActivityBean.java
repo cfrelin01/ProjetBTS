@@ -47,6 +47,8 @@ public class DetailActivityBean implements Serializable {
     private LineChartModel lineModelCad;
     private LineChartModel lineModelHrm;
     
+
+    
     //dernieres valeurs live
     private String maxSpeed ; 
         
@@ -323,7 +325,7 @@ public class DetailActivityBean implements Serializable {
         List<DataActivity> listeDataActivities = this.activityBean.getListDataActivities();
         DataActivity lastActivity=listeDataActivities.get(listeDataActivities.size());
         
-        this.maxSpeed=lastActivity.getSpeed();;
+        this.maxSpeed=lastActivity.getSpeed();
     }
 
     
