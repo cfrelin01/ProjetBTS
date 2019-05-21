@@ -321,9 +321,9 @@ public class DetailActivityBean implements Serializable {
     public void setMaxSpeed(String maxSpeed) {
         
         List<DataActivity> listeDataActivities = this.activityBean.getListDataActivities();
-        DataActivity lastActivity=listeDataActivities.get(listeDataActivities.size());
+        DataActivity lastActivity=listeDataActivities.get(listeDataActivities.size()-1);
         
-        this.maxSpeed=lastActivity.getSpeed();;
+        this.maxSpeed=lastActivity.getSpeed();
     }
 
     

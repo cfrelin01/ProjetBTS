@@ -17,7 +17,7 @@
 
         <h1 style="margin-top: 10px">Sensor management :</h1>
 
-
+         <p:panel id="toggleable" header="Formulaire" collapsed="true" toggleable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
         <h:form id="formSensor" style="margin-bottom: 100px; margin-top: 50px; margin-left: 25%" >    
            <h:inputHidden value="#{sensorBean.sensor.idSensor}"/>
 
@@ -40,7 +40,9 @@
                 </f:facet>
             </p:panelGrid>
 
-        </h:form><br/>
+        </h:form>
+         </p:panel>     
+        <br/>
 
 
 

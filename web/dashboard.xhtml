@@ -37,8 +37,11 @@
                         <f:convertDateTime pattern="dd-MM-yyyy"/>
                     </h:outputText>
                     
+                    <h:outputText value="Computer:" />
+                    <h:outputText value="#{c.bike.computer.name}(#{c.bike.computer.addrMac})" />
+                    
                     <h:outputText value="Online:" />
-                     <h:graphicImage value="/resources/img/online.gif"  width="25" rendered="#{c.onLine==true}"/> 
+                    <h:graphicImage value="/resources/img/online.gif"  width="25" rendered="#{c.onLine==true}"/> 
                     <h:graphicImage value="/resources/img/offline.gif"  width="25" rendered="#{c.onLine==false}"/>  
 
                 </p:panelGrid>
@@ -64,6 +67,10 @@
                     <h:outputText value="#{c.onOffTime}" >
                         <f:convertDateTime pattern="dd-MM-yyyy"/>
                     </h:outputText>
+                    
+                    <h:outputText value="Online:" />
+                    <h:graphicImage value="/resources/img/online.gif"  width="25" rendered="#{c.onOff==true}"/> 
+                    <h:graphicImage value="/resources/img/offline.gif"  width="25" rendered="#{c.onOff==false}"/>
 
                 </p:panelGrid>
             </p:carousel>

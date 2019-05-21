@@ -139,7 +139,22 @@ public class CyclistREST {
                 cyclist.setOnLine(false);
                 this.editCyclist(cyclist);
                 return "1";
+                
+                
             }
+            
+            // chercher les infos du cyclist
+        if (!addrMac.equalsIgnoreCase("")) {
+            // chercher le rider et 
+            Computer computer = this.findComputer(addrMac);
+            System.out.println("Computer trouvé : " + computer);
+            // computer trouve
+            if (computer != null) {
+                computer.setOnOff(false);
+                
+                em.merge(computer);
+            }
+        }
         }
 
         return "0";

@@ -15,7 +15,7 @@
       <ui:include src="/menu.xhtml"/>
         
         <h1 style="margin-top: 10px">µComputer management :</h1>
-        
+        <p:panel id="toggleable" header="Formulaire" collapsed="true" toggleable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
         <h:form style="margin-bottom: 100px; margin-top: 50px; margin-left: 33%;margin-right: 33%">     
             <h:inputHidden value="#{computerBean.computer.idComputer}"/>
             <p:panelGrid id = "tableauForm" columns="4" >
@@ -41,7 +41,8 @@
             
           </p:panelGrid>
             
-        </h:form> 
+        </h:form>
+        </p:panel>
         
        
         
@@ -60,11 +61,13 @@
                     <h:outputText value="#{c.sim}" />         
                </p:column>
                 <p:column headerText="ONOFF">
-                    <h:outputText value="#{c.onOff}" />         
+                    
+                    <h:graphicImage value="/resources/img/online.gif"  width="25" rendered="#{c.onOff==true}"/> 
+                    <h:graphicImage value="/resources/img/offline.gif"  width="25" rendered="#{c.onOff==false}"/>         
                </p:column>
                 <p:column headerText="ONOFFTIME">
                     <h:outputText value="#{c.onOffTime}" >
-                        <f:convertDateTime pattern="dd-MM-yyyy HH:mm:ss" timeZone="Europe/Paris"/>
+                        <f:convertDateTime pattern="dd/MM/yyyy hh:mm:ss" timeZone="Europe/Paris"/>
                     </h:outputText>
                </p:column>
                 <p:column headerText="Action" colspan="1" >

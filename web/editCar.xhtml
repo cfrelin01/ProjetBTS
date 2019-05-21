@@ -15,6 +15,7 @@
       <ui:include src="/menu.xhtml"/>
         
         <h1 style="margin-top: 10px">Car management :</h1>
+         <p:panel id="toggleable" header="Formulaire" collapsed="true" toggleable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
         <h:form style="margin-bottom: 100px; margin-top: 50px; margin-left: 25%;margin-right: 33%" >     
             <h:inputHidden value="#{carBean.car.idCar}"/>
             <p:panelGrid id = "tableauForm" columns="4" >
@@ -40,7 +41,9 @@
             
           </p:panelGrid>
             
-        </h:form><br></br>
+        </h:form>
+         </p:panel>
+             <br></br>
         
        
         
