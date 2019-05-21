@@ -38,8 +38,8 @@
                     </h:outputText>
                     
                     <h:outputText value="Online:" />
-                     <h:graphicImage value="/resources/img/online-icon.jpg"  width="25" rendered="#{c.onLine==true}"/> 
-                    <h:graphicImage value="/resources/img/offline-icon.jpg"  width="25" rendered="#{c.onLine==false}"/>  
+                     <h:graphicImage value="/resources/img/online.gif"  width="25" rendered="#{c.onLine==true}"/> 
+                    <h:graphicImage value="/resources/img/offline.gif"  width="25" rendered="#{c.onLine==false}"/>  
 
                 </p:panelGrid>
             </p:carousel>
@@ -76,8 +76,8 @@
                     
                     <f:facet name="header">
                         
-                        <h:graphicImage value="/resources/img/online-icon.jpg"  width="100" rendered="#{c.stopTime==null}"/> 
-                        <h:graphicImage value="/resources/img/offline-icon.jpg"  width="100" rendered="#{c.stopTime!=null}"/> 
+                        <h:graphicImage value="/resources/img/online.gif"  width="100" rendered="#{c.stopTime==null}"/> 
+                        <h:graphicImage value="/resources/img/offline.gif"  width="100" rendered="#{c.stopTime!=null}"/> 
 
                     </f:facet>
                     
