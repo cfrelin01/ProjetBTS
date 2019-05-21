@@ -145,6 +145,10 @@
                 <p:column headerText="bike">
                     <h:outputText value="#{c.bike.serialNum} (#{c.bike.typeBike})" />
                 </p:column>
+                <p:column headerText="Computer">
+                    <h:outputText value="#{c.bike.computer.name} (#{c.bike.computer.addrMac})" />
+                </p:column>
+                
                  <p:column headerText="State:">
                     <h:graphicImage value="/resources/img/online.gif"  width="50" rendered="#{c.onLine==true}"/> 
                     <h:graphicImage value="/resources/img/offline.gif"  width="50" rendered="#{c.onLine==false}"/> 

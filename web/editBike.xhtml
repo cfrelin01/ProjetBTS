@@ -81,16 +81,14 @@
                     <h:outputText value="#{c.typeBike}" />
                 </p:column>
                 <p:column headerText="Computer">
-                    <h:outputText value="#{c.computer.name}" />
+                    <h:outputText value="#{c.computer.name}(#{c.computer.addrMac})" />
                 </p:column>
                 <p:column headerText="Sensors">
                     <h:outputText value="#{c.sensor.name}" />
                 </p:column>
-                <p:column headerText="Picture">
-                    <p:graphicImage value="#{c.picture}"  />  
-                </p:column>
+                
                 <p:column headerText="Action" colspan="2" >
-                    <p:commandButton id = "buttonModifier"  action="#{bikeBean.modifier(c)}" ajax="false" icon="fa fa-pencil [&#xf040;]"/>
+                    <p:commandButton id = "buttonModifier"  action="#{bikeBean.modifier(c)}" ajax="false" icon="fa fa-pencil [&#xf040;]"/>&nbsp;&nbsp;
                     <p:commandButton id = "buttonSupprimer" action="#{bikeBean.supprimer(c)}" ajax="false" icon="fa fa-trash [&#xf1f8;]"/>
                 </p:column>
             </p:dataTable>
