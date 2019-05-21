@@ -47,6 +47,8 @@ public class DetailActivityBean implements Serializable {
     private LineChartModel lineModelCad;
     private LineChartModel lineModelHrm;
     
+
+    
     //dernieres valeurs live
     private String maxSpeed ; 
         
