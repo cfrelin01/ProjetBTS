@@ -46,7 +46,7 @@
                         <f:convertDateTime pattern="dd-MM-yyyy hh:mm:ss"/>
                     </h:outputText>
                 </p:column>
-                <p:column headerText="online">
+                <p:column headerText="State:">
                     <h:graphicImage value="/resources/img/online.gif"  width="50" rendered="#{a.stopTime==null}"/> 
                     <h:graphicImage value="/resources/img/offline.gif"  width="50" rendered="#{a.stopTime!=null}"/> 
                 </p:column>
