@@ -93,6 +93,7 @@ public class CyclistREST {
             // chercher le rider et 
             Cyclist cyclist = this.findSensorCyclist(addrMac);
             System.out.println("Cycliste trouvé : " + cyclist);
+         
             // cyclist trouve
             if (cyclist != null) {
                 // creer une nouvelle activite pour le rider
@@ -108,8 +109,16 @@ public class CyclistREST {
                 Sensor sensor = cyclist.getBike().getSensor();
                 String result = "idActivity=" + activity.getIdActivity() + "#sensorNUMPWR=" + sensor.getNumPwr() + "#sensorNUMSPEEDANDCADENCE=" + sensor.getNumCadAndSpd() + "#sensorNUMHRM=" + sensor.getNumHrm();
                 return result;
+                
+             
             }
+            
+            
+        
         }
+        
+            
+       
 
         return "0";
     }
@@ -126,6 +135,7 @@ public class CyclistREST {
         if (!addrMac.equalsIgnoreCase("") && !idActivity.equalsIgnoreCase("")) {
             // chercher le cyclist
             Cyclist cyclist = this.findSensorCyclist(addrMac);
+            Computer computer = this.findComputer(addrMac);
             // cyclist trouve
             if (cyclist != null) {
                 // fin de l'activite
@@ -139,23 +149,17 @@ public class CyclistREST {
                 cyclist.setOnLine(false);
                 this.editCyclist(cyclist);
                 return "1";
-                
-                
             }
-            
-            // chercher les infos du cyclist
-        if (!addrMac.equalsIgnoreCase("")) {
-            // chercher le rider et 
-            Computer computer = this.findComputer(addrMac);
-            System.out.println("Computer trouvé : " + computer);
-            // computer trouve
             if (computer != null) {
                 computer.setOnOff(false);
                 
                 em.merge(computer);
             }
+            
+
         }
-        }
+        
+      
 
         return "0";
     }
