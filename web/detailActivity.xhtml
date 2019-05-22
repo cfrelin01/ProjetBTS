@@ -78,6 +78,37 @@
                  <p:inputText value="" id="avgHrm" required="true" label="avgHrm"/>  
              </p:panelGrid>
          </h:form>
+            <h:form id="formCyclist">
+            <p:poll interval="1" update="formCyclist" /> 
+            <p:carousel value="#{detailActivityBean.activityBean.listActivities}" headerText="Cyclist " var="c"  style="margin-top: 50px" itemStyle="text-align:center" responsive="true">
+                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+                        <h:graphicImage value="/imgcyclist/#{c.cyclist.imgCyclist}" width="150" rendered="#{c.cyclist.imgCyclist!=''}"/>
+                        <h:graphicImage value="/resources/img/anonymous.png"  width="150" rendered="#{c.cyclist.imgCyclist==''}"/> 
+
+                    </f:facet>
+
+                    <h:outputText value="Nom:" />
+                    <h:outputText value="#{c.cyclist.lastName}" />
+
+                    <h:outputText value="Prenom:" />
+                    <h:outputText value="#{c.cyclist.firstName}" />
+
+                    <h:outputText value="Date Naissance:" />
+                    <h:outputText value="#{c.cyclist.dateBirth}" >
+                        <f:convertDateTime pattern="dd-MM-yyyy"/>
+                    </h:outputText>
+                    
+                    <h:outputText value="Computer:" />
+                    <h:outputText value="#{c.cyclist.bike.computer.name}(#{c.cyclist.bike.computer.addrMac})" />
+                    
+                    <h:outputText value="State:" />
+                    <h:graphicImage value="/resources/img/online.gif"  width="25" rendered="#{c.cyclist.onLine==true}"/> 
+                    <h:graphicImage value="/resources/img/offline.gif"  width="25" rendered="#{c.cyclist.onLine==false}"/>  
+
+                </p:panelGrid>
+            </p:carousel>
+        </h:form>
          </p>
 
         <!--
