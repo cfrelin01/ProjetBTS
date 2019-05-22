@@ -55,7 +55,27 @@ public class CyclistREST {
         return new Date().getTime();
     }
     
-    
+    @GET
+    @Path("/offCompute/{addrMac}")
+    public String offCompute(@PathParam("addrMac") String addrMac) {
+
+        System.out.println("addrMAC : " + addrMac);
+
+        // chercher les infos du cyclist
+        if (!addrMac.equalsIgnoreCase("")) {
+            // chercher le rider et 
+            Computer computer = this.findComputer(addrMac);
+            System.out.println("Computer trouvé : " + computer);
+            // computer trouve
+            if (computer != null) {
+                computer.setOnOff(false);
+                computer.setOnOffTime(new Date());
+                em.merge(computer);
+            }
+        }
+
+        return "1";
+    }
     
     @GET
     @Path("/onoff/{addrMac}")
@@ -78,6 +98,8 @@ public class CyclistREST {
 
         return "1";
     }
+    
+    
     
     
     

@@ -78,10 +78,13 @@
                  <p:inputText value="" id="avgHrm" required="true" label="avgHrm"/>  
              </p:panelGrid>
          </h:form>
+             
+         
             <h:form id="formCyclist">
-            <p:poll interval="1" update="formCyclist" /> 
-            <p:carousel value="#{detailActivityBean.listDataActivities}" headerText="Cyclist " var="c"  itemStyle="height:400px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:250px" circular="true">
+            
+            <p:carousel value="#{activityBean.listDataActivities}" headerText="Cyclist " var="c"  itemStyle="height:400px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:250px" circular="true">
                 <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                    
                     <f:facet name="header">
                         <h:graphicImage value="/imgcyclist/#{c.activity.cyclist.imgCyclist}" width="150" rendered="#{c.activity.cyclist.imgCyclist!=''}"/>
                         <h:graphicImage value="/resources/img/anonymous.png"  width="150" rendered="#{c.activity.cyclist.imgCyclist==''}"/> 
@@ -90,7 +93,7 @@
 
                     <h:outputText value="Nom:" />
                     <h:outputText value="#{c.activity.cyclist.lastName}" />
-
+ 
                     <h:outputText value="Prenom:" />
                     <h:outputText value="#{c.activity.cyclist.firstName}" />
 
@@ -107,9 +110,11 @@
                     <h:graphicImage value="/resources/img/offline.gif"  width="25" rendered="#{c.activity.cyclist.onLine==false}"/>  
 
                 </p:panelGrid>
-            </p:carousel>
+            </p:carousel> 
         </h:form>
-         </p>
+
+       </p>
+        
 
         <!--
                 <h:outputText value="#{detailActivityBean.maxSpeed}" />

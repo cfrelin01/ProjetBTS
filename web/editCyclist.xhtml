@@ -49,7 +49,7 @@
                 <p:outputLabel value="Bike:" />
                 <p:selectOneMenu id="bikechoice" required="true" value="#{cyclistBean.cyclist.bike.idBike}">
                     <f:selectItem itemLabel="Veuillez choisir un vélo" itemValue="" />
-                    <f:selectItems value="#{bikeBean.listBike}" var="bike" itemLabel="#{bike.serialNum}(#{bike.typeBike})" itemValue="#{bike.idBike}" />                  
+                    <f:selectItems value="#{bikeBean.listBike}" var="bike" itemLabel="#{bike.serialNum}(#{bike.typeBike})(#{bike.sensor.name})" itemValue="#{bike.idBike}" />                  
                 </p:selectOneMenu>
                 
                 <p:outputLabel value="PMA : " />
