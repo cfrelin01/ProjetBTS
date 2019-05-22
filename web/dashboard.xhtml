@@ -18,7 +18,7 @@
 
 
         <h:form id="formCyclist">
-            <p:poll interval="1" update="formCyclist" /> 
+            <p:poll interval="3" update="formCyclist" /> 
             <p:carousel value="#{cyclistBean.listeCyclists}" headerText="Cyclist " var="c"  style="margin-top: 50px" itemStyle="text-align:center" responsive="true">
                 <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                     <f:facet name="header">
@@ -50,7 +50,7 @@
         </h:form>
 
         <h:form id="formComputer">
-            <p:poll interval="1" update="formComputer" /> 
+            <p:poll interval="3" update="formComputer" /> 
             <p:carousel value="#{computerBean.listerComputer}" headerText="Computer " var="c"  style="margin-top: 50px" itemStyle="text-align:center" responsive="true">
                 <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                     <f:facet name="header">
@@ -80,7 +80,7 @@
         
         
         <h:form id="formActivity">
-            <p:poll interval="1" update="formActivity" /> 
+            <p:poll interval="3" update="formActivity" /> 
             <p:carousel value="#{activityBean.listActivities}" headerText="Activities " var="c"  style="margin-top: 50px" itemStyle="text-align:center" responsive="true">
                 <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                     
