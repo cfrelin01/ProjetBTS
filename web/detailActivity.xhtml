@@ -64,10 +64,10 @@
                     <f:facet name="header">
                         Speed
                     </f:facet> 
-                    <p:outputLabel value="MAX:" />
-                    <p:inputText value="" id="maxSpeed" required="true" label="maxSpeed"/>
-                    <p:outputLabel value="AVG: " />
-                    <p:inputText value="" id="avgSpeed" required="true" label="avgSpeed"/>  
+                    <p:outputLabel value="MAX :" />
+                    <p:inputText id="SpeedMax" readonly="true"/>
+                    <p:outputLabel value="AVG : " />
+                    <p:inputText id="SpeedAvg" readonly="true"/>  
                 </p:panelGrid>
             </h:form>
 
@@ -78,10 +78,10 @@
                     <f:facet name="header">
                         Power
                     </f:facet>
-                    <p:outputLabel value="MAX:" />
-                    <p:inputText value="" id="maxPwr" required="true" label="maxPwr"/>
-                    <p:outputLabel value="AVG: " />
-                    <p:inputText value="" id="avgPwr" required="true" label="avgPwr"/>
+                    <p:outputLabel value="MAX :" />
+                    <p:inputText id="PwrMax" readonly="true"/>
+                    <p:outputLabel value="AVG : " />
+                   <p:inputText id="PwrAvg" readonly="true"/>
                 </p:panelGrid>
             </h:form>
         
@@ -92,10 +92,10 @@
                 <f:facet name="header">
                     Cadence
                 </f:facet>  
-                <p:outputLabel value="MAX:" />
-                <p:inputText value="" id="maxCad" required="true" label="maxCad"/> 
-                <p:outputLabel value="AVG: " />
-                <p:inputText value="" id="avgCad" required="true" label="avgCad"/>
+                <p:outputLabel value="MAX :" />
+                <p:inputText id="CadMax" readonly="true"/> 
+                <p:outputLabel value="AVG : " />
+                <p:inputText id="CadAvg" readonly="true"/>
             </p:panelGrid>
         </h:form>
             
@@ -105,10 +105,11 @@
                  <f:facet name="header">
                      HRM
                  </f:facet>
-                 <p:outputLabel value="MAX:" />
-                 <p:inputText value="" id="maxHrm" required="true" label="maxHrm"/> 
-                 <p:outputLabel value="AVG: " />
-                 <p:inputText value="" id="avgHrm" required="true" label="avgHrm"/>  
+                 <p:outputLabel value="MAX :" />
+                 <p:inputText id="HrmMax" readonly="true"/>
+                 <p:outputLabel value="AVG : " />
+                 <p:inputText id="HrmAvg" readonly="true"/>
+                   
              </p:panelGrid>
          </h:form>
        </p>
