@@ -10,6 +10,7 @@
 
     <h:head class="w3-container" >
         <link rel="stylesheet" href="css/style.css" type="text/css"></link>
+        <link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet"/>
         <title>Activities management</title>
     </h:head>
 
@@ -26,61 +27,7 @@
 
         <p>
             
-            <h:form style="display: inline-table; align-items: center">     
-                <p:panelGrid id = "tableauForm" columns="2"  style="width: 100px">
-                    <f:facet name="header">
-                        Speed
-                    </f:facet> 
-                    <p:outputLabel value="MAX:" />
-                    <p:inputText value="" id="maxSpeed" required="true" label="maxSpeed"/>
-                    <p:outputLabel value="AVG: " />
-                    <p:inputText value="" id="avgSpeed" required="true" label="avgSpeed"/>  
-                </p:panelGrid>
-            </h:form>
-
-
-            <h:form style="display: inline-table; align-items: center"> 
-                <p:panelGrid id = "tableauForm" columns="2" style="width: 100px" >
-
-                    <f:facet name="header">
-                        Power
-                    </f:facet>
-                    <p:outputLabel value="MAX:" />
-                    <p:inputText value="" id="maxPwr" required="true" label="maxPwr"/>
-                    <p:outputLabel value="AVG: " />
-                    <p:inputText value="" id="avgPwr" required="true" label="avgPwr"/>
-                </p:panelGrid>
-            </h:form>
-        
-
-        <h:form style="display: inline-table; align-items: center"> 
-                <p:panelGrid id = "tableauForm" columns="2" style="width: 100px" >
-
-                <f:facet name="header">
-                    Cadence
-                </f:facet>  
-                <p:outputLabel value="MAX:" />
-                <p:inputText value="" id="maxCad" required="true" label="maxCad"/> 
-                <p:outputLabel value="AVG: " />
-                <p:inputText value="" id="avgCad" required="true" label="avgCad"/>
-            </p:panelGrid>
-        </h:form>
-            
-         <h:form style="display: inline-table; align-items: center"> 
-                <p:panelGrid id = "tableauForm" columns="2" style="width: 100px" >
- 
-                 <f:facet name="header">
-                     HRM
-                 </f:facet>
-                 <p:outputLabel value="MAX:" />
-                 <p:inputText value="" id="maxHrm" required="true" label="maxHrm"/> 
-                 <p:outputLabel value="AVG: " />
-                 <p:inputText value="" id="avgHrm" required="true" label="avgHrm"/>  
-             </p:panelGrid>
-         </h:form>
-             
-         
-            <h:form id="formCyclist">
+             <h:form id="formCyclist" style="display: inline-table; align-items: center">
             
             <p:carousel value="#{activityBean.listDataActivities}" headerText="Cyclist " var="c"  itemStyle="height:400px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:250px" circular="true">
                 <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
@@ -112,7 +59,59 @@
                 </p:panelGrid>
             </p:carousel> 
         </h:form>
+            
+            <h:form style="display: inline-table; align-items: center">     
+                <p:panelGrid id = "tableauForm" columns="2" >
+                    <f:facet name="header">
+                        Speed
+                    </f:facet> 
+                    <p:outputLabel value="MAX:" />
+                    <p:inputText value="" id="maxSpeed" required="true" label="maxSpeed"/>
+                    <p:outputLabel value="AVG: " />
+                    <p:inputText value="" id="avgSpeed" required="true" label="avgSpeed"/>  
+                </p:panelGrid>
+            </h:form>
 
+
+            <h:form style="display: inline-table; align-items: center"> 
+                <p:panelGrid id = "tableauForm" columns="2" >
+
+                    <f:facet name="header">
+                        Power
+                    </f:facet>
+                    <p:outputLabel value="MAX:" />
+                    <p:inputText value="" id="maxPwr" required="true" label="maxPwr"/>
+                    <p:outputLabel value="AVG: " />
+                    <p:inputText value="" id="avgPwr" required="true" label="avgPwr"/>
+                </p:panelGrid>
+            </h:form>
+        
+
+        <h:form style="display: inline-table; align-items: center"> 
+                <p:panelGrid id = "tableauForm" columns="2" >
+
+                <f:facet name="header">
+                    Cadence
+                </f:facet>  
+                <p:outputLabel value="MAX:" />
+                <p:inputText value="" id="maxCad" required="true" label="maxCad"/> 
+                <p:outputLabel value="AVG: " />
+                <p:inputText value="" id="avgCad" required="true" label="avgCad"/>
+            </p:panelGrid>
+        </h:form>
+            
+         <h:form style="display: inline-table; align-items: center"> 
+                <p:panelGrid id = "tableauForm" columns="2" >
+ 
+                 <f:facet name="header">
+                     HRM
+                 </f:facet>
+                 <p:outputLabel value="MAX:" />
+                 <p:inputText value="" id="maxHrm" required="true" label="maxHrm"/> 
+                 <p:outputLabel value="AVG: " />
+                 <p:inputText value="" id="avgHrm" required="true" label="avgHrm"/>  
+             </p:panelGrid>
+         </h:form>
        </p>
         
 
