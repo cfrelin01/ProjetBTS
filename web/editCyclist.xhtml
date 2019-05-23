@@ -7,109 +7,115 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <style>html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}</style>
     <h:head class="w3-container" >
+        <link rel="stylesheet" href="css/style.css" type="text/css"></link>
         <title>Cyclist management</title>
     </h:head>
 
-    
+
     <h:body style="background-image:url(images/back.png); background-size:cover; background-repeat: no-repeat" >   
 
         <ui:include src="/menu.xhtml"/>
 
-        <h3 style="margin-top: 10px">Cyclist management :</h3>
-
+        <br></br> 
+        <div id="block" align="center" > 
+            <br></br>
+            Cyclist management :
+            <br></br> <br></br> 
+        </div>
+        <br></br> 
 
         <!-- formulaire d'edition -->
         <p:panel id="toggleable" header="Formulaire" collapsed="true" toggleable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
-        <h:form id="formCyclist" enctype="multipart/form-data" style="margin-bottom: 100px; margin-top: 50px; margin-left: 25%;margin-right: 33%" >     
-            <h:inputHidden value="#{cyclistBean.cyclist.idCyclist}"/>  
-            <h:inputHidden value="#{cyclistBean.cyclist.imgCyclist}"/>
-            <p:panelGrid id = "tableauForm" columns="4" >
-                <f:facet name="header">
-                    Cyclist
-                </f:facet>
+            <h:form id="formCyclist" enctype="multipart/form-data" style="margin-bottom: 100px; margin-top: 50px; margin-left: 25%;margin-right: 33%" >     
+                <h:inputHidden value="#{cyclistBean.cyclist.idCyclist}"/>  
+                <h:inputHidden value="#{cyclistBean.cyclist.imgCyclist}"/>
+                <p:panelGrid id = "tableauForm" columns="4" >
+                    <f:facet name="header">
+                        Cyclist
+                    </f:facet>
 
-                <p:outputLabel value="Last Name: " />
-                <p:inputText value="#{cyclistBean.cyclist.lastName}" id="lastName" required="true" label="LastName"/>  
-                <p:outputLabel value="First Name : " />
-                <p:inputText value="#{cyclistBean.cyclist.firstName}" id="firstName" required="true" label="firstName">
+                    <p:outputLabel value="Last Name: " />
+                    <p:inputText value="#{cyclistBean.cyclist.lastName}" id="lastName" required="true" label="LastName"/>  
+                    <p:outputLabel value="First Name : " />
+                    <p:inputText value="#{cyclistBean.cyclist.firstName}" id="firstName" required="true" label="firstName">
 
-                </p:inputText>             
-                <p:outputLabel value="Birth Date:" />
-                <p:calendar value="#{cyclistBean.cyclist.dateBirth}"  id="dateBirth" required="true" label="dateBirth" pattern="dd-MM-yyyy" mask="true" />
+                    </p:inputText>             
+                    <p:outputLabel value="Birth Date:" />
+                    <p:calendar value="#{cyclistBean.cyclist.dateBirth}"  id="dateBirth" required="true" label="dateBirth" pattern="dd-MM-yyyy" mask="true" />
 
-                <p:outputLabel value="Height(cm): " />
-                <p:inputText value="#{cyclistBean.cyclist.height}" id="height" required="true" label="height"/>
-                <p:outputLabel value="Weight(kg) : " />
-                <p:inputText value="#{cyclistBean.cyclist.weight}" id="weight" required="true" label="weight"/> 
-                
-                
-                <p:outputLabel for="picture" value="Picture " />
-                <p:fileUpload value="#{cyclistBean.file}" mode="simple" id="picture" sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-                 
-                <p:outputLabel value="Bike:" />
-                <p:selectOneMenu id="bikechoice" required="true" value="#{cyclistBean.cyclist.bike.idBike}">
-                    <f:selectItem itemLabel="Veuillez choisir un vélo" itemValue="" />
-                    <f:selectItems value="#{bikeBean.listBike}" var="bike" itemLabel="#{bike.serialNum}(#{bike.typeBike})(#{bike.sensor.name})" itemValue="#{bike.idBike}" />                  
-                </p:selectOneMenu>
-                
-                <p:outputLabel value="PMA : " />
-                <p:inputText value="#{cyclistBean.cyclist.PMA}" id="Pma" required="true" label="Pma"/> 
-                
-                <p:outputLabel value="I1 Min: " />
-                <p:inputText value="#{cyclistBean.cyclist.i1Min}" id="i1Min" required="true" label="i1Min"/> 
-                
-                <p:outputLabel value="I1 Max: " />
-                <p:inputText value="#{cyclistBean.cyclist.i1Max}" id="i1Max" required="true" label="i1Max"/>
-                
-                <p:outputLabel value="I2 Min: " />
-                <p:inputText value="#{cyclistBean.cyclist.i2Min}" id="i2Min" required="true" label="i2Min"/>
-                
-                <p:outputLabel value="I2 Max: " />
-                <p:inputText value="#{cyclistBean.cyclist.i2Max}" id="i2Max" required="true" label="i2Max"/>
-                
-                <p:outputLabel value="I3 Min: " />
-                <p:inputText value="#{cyclistBean.cyclist.i3Min}" id="i3Min" required="true" label="i3Min"/>
-                
-                <p:outputLabel value="I3 Max: " />
-                <p:inputText value="#{cyclistBean.cyclist.i3Max}" id="i3Max" required="true" label="i3Max"/>
-                
-                <p:outputLabel value="I4 Min: " />
-                <p:inputText value="#{cyclistBean.cyclist.i4Min}" id="i4Min" required="true" label="i4Min"/>
-                
-                <p:outputLabel value="I4 Max: " />
-                <p:inputText value="#{cyclistBean.cyclist.i4Max}" id="i4Max" required="true" label="i4Max"/>
-                
-                <p:outputLabel value="I5 Min: " />
-                <p:inputText value="#{cyclistBean.cyclist.i5Min}" id="i5Min" required="true" label="i5Min"/>
-                
-                <p:outputLabel value="I5 Max: " />
-                <p:inputText value="#{cyclistBean.cyclist.i5Max}" id="i5Max" required="true" label="i5Max"/>
+                    <p:outputLabel value="Height(cm): " />
+                    <p:inputText value="#{cyclistBean.cyclist.height}" id="height" required="true" label="height"/>
+                    <p:outputLabel value="Weight(kg) : " />
+                    <p:inputText value="#{cyclistBean.cyclist.weight}" id="weight" required="true" label="weight"/> 
 
-                <p:outputLabel value="&nbsp;" />
-                <p:outputLabel value="&nbsp;" />   
-               
-                <f:facet name = "footer">
-                    <h:panelGroup style = "display:block; text-align:center">
-                        <p:commandButton id = "buttonFormulaire" value="Editer" action="#{cyclistBean.edit()}" actionListener="#{cyclistBean.upload}" ajax="false" icon="fa fa-pencil [&#xf040;]" />
-                    </h:panelGroup>
-                </f:facet>
-            </p:panelGrid>
-        </h:form>
+
+                    <p:outputLabel for="picture" value="Picture " />
+                    <p:fileUpload value="#{cyclistBean.file}" mode="simple" id="picture" sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+
+                    <p:outputLabel value="Bike:" />
+                    <p:selectOneMenu id="bikechoice" required="true" value="#{cyclistBean.cyclist.bike.idBike}">
+                        <f:selectItem itemLabel="Veuillez choisir un vélo" itemValue="" />
+                        <f:selectItems value="#{bikeBean.listBike}" var="bike" itemLabel="#{bike.serialNum}(#{bike.typeBike})(#{bike.sensor.name})" itemValue="#{bike.idBike}" />                  
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="PMA : " />
+                    <p:inputText value="#{cyclistBean.cyclist.PMA}" id="Pma" required="true" label="Pma"/> 
+
+                    <p:outputLabel value="I1 Min: " />
+                    <p:inputText value="#{cyclistBean.cyclist.i1Min}" id="i1Min" required="true" label="i1Min"/> 
+
+                    <p:outputLabel value="I1 Max: " />
+                    <p:inputText value="#{cyclistBean.cyclist.i1Max}" id="i1Max" required="true" label="i1Max"/>
+
+                    <p:outputLabel value="I2 Min: " />
+                    <p:inputText value="#{cyclistBean.cyclist.i2Min}" id="i2Min" required="true" label="i2Min"/>
+
+                    <p:outputLabel value="I2 Max: " />
+                    <p:inputText value="#{cyclistBean.cyclist.i2Max}" id="i2Max" required="true" label="i2Max"/>
+
+                    <p:outputLabel value="I3 Min: " />
+                    <p:inputText value="#{cyclistBean.cyclist.i3Min}" id="i3Min" required="true" label="i3Min"/>
+
+                    <p:outputLabel value="I3 Max: " />
+                    <p:inputText value="#{cyclistBean.cyclist.i3Max}" id="i3Max" required="true" label="i3Max"/>
+
+                    <p:outputLabel value="I4 Min: " />
+                    <p:inputText value="#{cyclistBean.cyclist.i4Min}" id="i4Min" required="true" label="i4Min"/>
+
+                    <p:outputLabel value="I4 Max: " />
+                    <p:inputText value="#{cyclistBean.cyclist.i4Max}" id="i4Max" required="true" label="i4Max"/>
+
+                    <p:outputLabel value="I5 Min: " />
+                    <p:inputText value="#{cyclistBean.cyclist.i5Min}" id="i5Min" required="true" label="i5Min"/>
+
+                    <p:outputLabel value="I5 Max: " />
+                    <p:inputText value="#{cyclistBean.cyclist.i5Max}" id="i5Max" required="true" label="i5Max"/>
+
+                    <p:outputLabel value="&nbsp;" />
+                    <p:outputLabel value="&nbsp;" />   
+
+                    <f:facet name = "footer">
+                        <h:panelGroup style = "display:block; text-align:center">
+                            <p:commandButton id = "buttonFormulaire" value="Editer" action="#{cyclistBean.edit()}" actionListener="#{cyclistBean.upload}" ajax="false" icon="fa fa-pencil [&#xf040;]" />
+                        </h:panelGroup>
+                    </f:facet>
+                </p:panelGrid>
+            </h:form>
         </p:panel>
-        
-        
+
+
         <!-- tableau des cyclistes -->
         <h:form id="formTabCyclists">   
             <p:dataTable value="#{cyclistBean.listeCyclists}" var="c"  style = "text-align:center" paginator="true" rows="10" id="tabCyclists" >
                 <f:facet name="header">
                     Liste des cyclistes
                 </f:facet>
-                
+
                 <p:column  headerText="Picture">
                     <h:graphicImage value="/imgcyclist/#{c.imgCyclist}" width="60" rendered="#{c.imgCyclist!=''}"/>
                     <h:graphicImage value="/resources/img/anonymous.png" width="60" rendered="#{c.imgCyclist==''}"/> 
                 </p:column>    
-                    
+
                 <p:column  headerText="Last Name">
                     <h:outputText value="#{c.lastName}" />
                 </p:column>
@@ -128,7 +134,7 @@
                 <p:column headerText="weight">
                     <h:outputText value="#{c.weight}(kg)" />
                 </p:column>
-                
+
                 <p:column headerText="Pma">
                     <h:outputText value="Pma(#{c.PMA}) " />
                     <br></br>
@@ -148,8 +154,8 @@
                 <p:column headerText="Computer">
                     <h:outputText value="#{c.bike.computer.name} (#{c.bike.computer.addrMac})" />
                 </p:column>
-                
-                 <p:column headerText="State:">
+
+                <p:column headerText="State:">
                     <h:graphicImage value="/resources/img/online.gif"  width="50" rendered="#{c.onLine==true}"/> 
                     <h:graphicImage value="/resources/img/offline.gif"  width="50" rendered="#{c.onLine==false}"/> 
                 </p:column>

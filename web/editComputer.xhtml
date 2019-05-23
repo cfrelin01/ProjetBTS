@@ -5,47 +5,55 @@
       xmlns:f = "http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-        <style>html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}</style>
+    <style>html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}</style>
     <h:head>
+        <link rel="stylesheet" href="css/style.css" type="text/css"></link>
         <title>µComputer management</title>
     </h:head>
-    
+
     <h:body style="background-image:url(images/back.png); background-size:cover; background-repeat: no-repeat">   
-       
-      <ui:include src="/menu.xhtml"/>
-        
-        <h1 style="margin-top: 10px">µComputer management :</h1>
+
+        <ui:include src="/menu.xhtml"/>
+
+        <br></br>
+        <div id="block" align="center" > 
+            <br></br>
+            µComputer management :
+            <br></br> <br></br> 
+        </div>
+
+        <br></br>
         <p:panel id="toggleable" header="Formulaire" collapsed="true" toggleable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
-        <h:form style="margin-bottom: 100px; margin-top: 50px; margin-left: 33%;margin-right: 33%">     
-            <h:inputHidden value="#{computerBean.computer.idComputer}"/>
-            <p:panelGrid id = "tableauForm" columns="4" >
-                <f:facet name="header">
-                    µComputer
-                </f:facet>
-            
-            <p:outputLabel value="Name: " />
-            <p:inputText value="#{computerBean.computer.name}" id="name" required="true" label="name"/>  
-            <p:outputLabel value="MAC: " />
-            <p:inputText value="#{computerBean.computer.addrMac}" id="addrMac" required="true" label="addrMac"/>  
-            <p:outputLabel value="SIM:" />
-            <p:inputText value="#{computerBean.computer.sim}"  id="sim" required="true" label="sim" />
-            
-   
-            <p:outputLabel value="&nbsp;" /><p:outputLabel value="&nbsp;" />
-            
-            <f:facet name = "footer">
-               <h:panelGroup style = "display:block; text-align:center">
-                   <p:commandButton id = "buttonFormulaire" value = "Edit" action="#{computerBean.ajouter()}" ajax="false"/>
-               </h:panelGroup>
-            </f:facet>
-            
-          </p:panelGrid>
-            
-        </h:form>
+            <h:form style="margin-bottom: 100px; margin-top: 50px; margin-left: 33%;margin-right: 33%">     
+                <h:inputHidden value="#{computerBean.computer.idComputer}"/>
+                <p:panelGrid id = "tableauForm" columns="4" >
+                    <f:facet name="header">
+                        µComputer
+                    </f:facet>
+
+                    <p:outputLabel value="Name: " />
+                    <p:inputText value="#{computerBean.computer.name}" id="name" required="true" label="name"/>  
+                    <p:outputLabel value="MAC: " />
+                    <p:inputText value="#{computerBean.computer.addrMac}" id="addrMac" required="true" label="addrMac"/>  
+                    <p:outputLabel value="SIM:" />
+                    <p:inputText value="#{computerBean.computer.sim}"  id="sim" required="true" label="sim" />
+
+
+                    <p:outputLabel value="&nbsp;" /><p:outputLabel value="&nbsp;" />
+
+                    <f:facet name = "footer">
+                        <h:panelGroup style = "display:block; text-align:center">
+                            <p:commandButton id = "buttonFormulaire" value = "Edit" action="#{computerBean.ajouter()}" ajax="false"/>
+                        </h:panelGroup>
+                    </f:facet>
+
+                </p:panelGrid>
+
+            </h:form>
         </p:panel>
-        
-       
-        
+
+
+
         <h:form>              
             <p:dataTable value="#{computerBean.listerComputer}" var="c"  style = "text-align:center" paginator="true" rows="10">
                 <f:facet name="header">
@@ -59,23 +67,23 @@
                 </p:column>
                 <p:column headerText="SIM">
                     <h:outputText value="#{c.sim}" />         
-               </p:column>
+                </p:column>
                 <p:column headerText="State:">
-                    
+
                     <h:graphicImage value="/resources/img/online.gif"  width="25" rendered="#{c.onOff==true}"/> 
                     <h:graphicImage value="/resources/img/offline.gif"  width="25" rendered="#{c.onOff==false}"/>         
-               </p:column>
+                </p:column>
                 <p:column headerText="ONOFFTIME">
                     <h:outputText value="#{c.onOffTime}" >
                         <f:convertDateTime pattern="dd/MM/yyyy hh:mm:ss" timeZone="Europe/Paris"/>
                     </h:outputText>
-               </p:column>
+                </p:column>
                 <p:column headerText="Action" colspan="1" >
                     <p:commandButton id = "buttonModifier"  action="#{computerBean.modifier(c)}" ajax="false" icon="fa fa-pencil [&#xf040;]"/>&nbsp;&nbsp;
-                   <p:commandButton id = "buttonSupprimer" action="#{computerBean.supprimer(c)}" ajax="false" icon="fa fa-trash [&#xf1f8;]"/>
+                    <p:commandButton id = "buttonSupprimer" action="#{computerBean.supprimer(c)}" ajax="false" icon="fa fa-trash [&#xf1f8;]"/>
                 </p:column>
             </p:dataTable>
-                
+
         </h:form>        
 
     </h:body>

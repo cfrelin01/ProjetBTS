@@ -10,6 +10,7 @@
 
 
     <h:head class="w3-container" >
+        <link rel="stylesheet" href="css/style.css" type="text/css"></link>
         <title>Activities management</title>
     </h:head>
 
@@ -19,9 +20,14 @@
         <br/>
 
 
-        <h1 style="margin-top: 10px">Activities management :</h1>
+        <div id="block" align="center" > 
+            <br></br>
+            Activities management :
+            <br></br> <br></br> 
+        </div>
 
-
+        <br></br>
+        <br></br>
         <!-- tableau des cyclistes -->
 
         <h:form id="formTabActivities">   
@@ -50,9 +56,9 @@
                     <h:graphicImage value="/resources/img/online.gif"  width="50" rendered="#{a.stopTime==null}"/> 
                     <h:graphicImage value="/resources/img/offline.gif"  width="50" rendered="#{a.stopTime!=null}"/> 
                 </p:column>
-                 <p:column headerText="Action" colspan="2" >
-                     <p:commandButton id="buttonDetail" action="#{activityBean.detailActivity(a)}" ajax="false" icon="fa fa-search [&#xf1f8;]"/>&nbsp;&nbsp;
-                     <p:commandButton id = "buttonSupprimer" action="#{activityBean.supprimer(a)}" ajax="false" icon="fa fa-trash [&#xf1f8;]"/>
+                <p:column headerText="Action" colspan="2" >
+                    <p:commandButton id="buttonDetail" action="#{activityBean.detailActivity(a)}" ajax="false" icon="fa fa-search [&#xf1f8;]"/>&nbsp;&nbsp;
+                    <p:commandButton id = "buttonSupprimer" action="#{activityBean.supprimer(a)}" ajax="false" icon="fa fa-trash [&#xf1f8;]"/>
                 </p:column>
             </p:dataTable>
 
