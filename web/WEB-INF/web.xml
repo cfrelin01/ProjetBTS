@@ -55,7 +55,7 @@
     </session-config>
     
     <welcome-file-list>
-        <welcome-file>login.jsf</welcome-file>
+        <welcome-file>dashboard.jsf</welcome-file>
     </welcome-file-list>
     
 </web-app>
