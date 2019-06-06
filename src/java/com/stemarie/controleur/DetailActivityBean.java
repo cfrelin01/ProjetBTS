@@ -76,7 +76,7 @@ public class DetailActivityBean implements Serializable {
         lineModel = this.initLinearModel();
         lineModel.setTitle("Power");
         lineModel.setLegendPosition("ne");
-        lineModel.setSeriesColors("000000");
+        lineModel.setSeriesColors("f52323,f79833,f0e531,33f83f,60d1ed,000000");
         lineModel.setShadow(false);
         
         Axis yAxis = lineModel.getAxis(AxisType.Y);
@@ -113,12 +113,12 @@ public class DetailActivityBean implements Serializable {
         LineChartSeries i2 = new LineChartSeries();
         i2.setLabel("I2");
         i2.setFill(true);
-//        BarChartSeries i3 = new BarChartSeries();
-//        i3.setLabel("I3");
-//        BarChartSeries i4 = new BarChartSeries();
-//        i4.setLabel("I4");
-//        BarChartSeries i5 = new BarChartSeries();
-//        i5.setLabel("I5");
+        BarChartSeries i3 = new BarChartSeries();
+        i3.setLabel("I3");
+        BarChartSeries i4 = new BarChartSeries();
+        i4.setLabel("I4");
+        BarChartSeries i5 = new BarChartSeries();
+        i5.setLabel("I5");
        
 
         //remplir le graphique
@@ -143,9 +143,9 @@ public class DetailActivityBean implements Serializable {
             pwr.set(sm.format(data.getTimeData()), data.getPwr());
             i1.set(sm.format(data.getTimeData()), 400);
             i2.set(sm.format(data.getTimeData()), 800);
-//            i3.set(sm.format(data.getTimeData()), 1200);
-//            i4.set(sm.format(data.getTimeData()), 1600);
-//            i5.set(sm.format(data.getTimeData()), 2000);
+            i3.set(sm.format(data.getTimeData()), 1200);
+            i4.set(sm.format(data.getTimeData()), 1600);
+            i5.set(sm.format(data.getTimeData()), 2000);
         
             //conserver le min
             if (compteur == 0) {
@@ -156,8 +156,9 @@ public class DetailActivityBean implements Serializable {
             compteur++;
         }
         //System.out.println("Max axis : "+maxAxis);
-        
-//      
+        model.addSeries(i5);
+        model.addSeries(i4);
+        model.addSeries(i3);
         model.addSeries(i2);
         model.addSeries(i1);
         model.addSeries(pwr);
