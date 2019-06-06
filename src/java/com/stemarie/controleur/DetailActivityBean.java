@@ -16,6 +16,7 @@ import javax.persistence.Query;
 import javax.transaction.UserTransaction;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartSeries;
 import org.primefaces.model.chart.DateAxis;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
@@ -75,7 +76,9 @@ public class DetailActivityBean implements Serializable {
         lineModel = this.initLinearModel();
         lineModel.setTitle("Power");
         lineModel.setLegendPosition("ne");
-        lineModel.setSeriesColors("4E3ED2");
+        lineModel.setSeriesColors("000000");
+        lineModel.setShadow(false);
+        
         Axis yAxis = lineModel.getAxis(AxisType.Y);
         Axis xAxis = lineModel.getAxis(AxisType.X);
 
@@ -102,17 +105,31 @@ public class DetailActivityBean implements Serializable {
         //créer le trait des watts (PWR)
         LineChartSeries pwr = new LineChartSeries();
         pwr.setLabel("Power");
-
+        
+         LineChartSeries i1 = new LineChartSeries();
+        i1.setLabel("I1");
+        i1.setFill(true);
+        
+        LineChartSeries i2 = new LineChartSeries();
+        i2.setLabel("I2");
+        i2.setFill(true);
+//        BarChartSeries i3 = new BarChartSeries();
+//        i3.setLabel("I3");
+//        BarChartSeries i4 = new BarChartSeries();
+//        i4.setLabel("I4");
+//        BarChartSeries i5 = new BarChartSeries();
+//        i5.setLabel("I5");
        
 
         //remplir le graphique
         List<DataActivity> listeDataActivities = this.activityBean.getListDataActivities();
+//        int i1max = this.activity.getCyclist().getI1Max();
+//        int i2max = this.activity.getCyclist().getI2Max();
+//        int i3max = this.activity.getCyclist().getI3Max();
+//        int i4max = this.activity.getCyclist().getI4Max();
+//        int i5max = this.activity.getCyclist().getI5Max();
+        
        
-        
-        
-        
-        
-        
 
         SimpleDateFormat sm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         // myDate is the java.util.Date in yyyy-mm-dd format
@@ -124,6 +141,11 @@ public class DetailActivityBean implements Serializable {
         //parcourir les données de l'activité
         for (DataActivity data : listeDataActivities) {
             pwr.set(sm.format(data.getTimeData()), data.getPwr());
+            i1.set(sm.format(data.getTimeData()), 400);
+            i2.set(sm.format(data.getTimeData()), 800);
+//            i3.set(sm.format(data.getTimeData()), 1200);
+//            i4.set(sm.format(data.getTimeData()), 1600);
+//            i5.set(sm.format(data.getTimeData()), 2000);
         
             //conserver le min
             if (compteur == 0) {
@@ -134,14 +156,20 @@ public class DetailActivityBean implements Serializable {
             compteur++;
         }
         //System.out.println("Max axis : "+maxAxis);
-
+        
+//      
+        model.addSeries(i2);
+        model.addSeries(i1);
         model.addSeries(pwr);
-     
+        
+        
+        
 
         //activer le clic droit pour zoomer
         model.setTitle("Zoom for Details");
         model.setZoom(true);
         model.getAxis(AxisType.Y).setLabel("Values");
+        
 
         //format de la date 
         DateAxis axis = new DateAxis("Time");
@@ -152,6 +180,10 @@ public class DetailActivityBean implements Serializable {
 
         axis.setTickFormat("%d-%m-%y %H:%#M:%S");
         model.getAxes().put(AxisType.X, axis);
+        
+       
+        
+        
 
         //retourner l'objet modele terminé
         return model;
@@ -268,6 +300,7 @@ public class DetailActivityBean implements Serializable {
 
         axis.setTickFormat("%d-%m-%y %H:%#M:%S");
         model.getAxes().put(AxisType.X, axis);
+        
 
         //retourner l'objet modele terminé
         return model;

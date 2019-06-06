@@ -10,6 +10,7 @@
 
     <h:head class="w3-container" >
         <link rel="stylesheet" href="css/style.css" type="text/css"></link>
+        <link rel="stylesheet" href="css/chart.css" type="text/css"></link>
         <title>Activities management</title>
     </h:head>
 
@@ -130,9 +131,9 @@
                 </h:form>-->
 
 
-        <h:form id="Power">
+        <h:form id="Powerform">
             <p:poll interval="1" update="Power" />
-            <p:chart type="line" model="#{detailActivityBean.lineModel}" style="background-color: blanchedalmond; width: 100%;height:500px"/>
+            <p:chart id="Power" type="line" model="#{detailActivityBean.lineModel}" style="background-color: blanchedalmond; width: 100%;height:500px;"/>
         </h:form>
 
         <br></br>
@@ -141,7 +142,7 @@
 
         <h:form id="Cadence">
             <p:poll interval="1" update="Cadence" />
-            <p:chart type="line" model="#{detailActivityBean.lineModelCad}" style="background-color: blanchedalmond; width: 100%;height:500px; background: linear-gradient(to bottom, rgba(247,49,0,0.2) 0%,rgba(247,49,0,0.2) 19%,rgba(242,242,0,0.2) 20%,rgba(242,242,0,0.2) 39%,rgba(97,196,25,0.2) 40%,rgba(97,196,25,0.2) 100%);"/>
+            <p:chart type="line" model="#{detailActivityBean.lineModelCad}" style="background-color: blanchedalmond; width: 100%;height:500px;"/>
         </h:form>
 
         <br></br>
