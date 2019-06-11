@@ -129,7 +129,8 @@ public class CyclistREST {
 
                 // formater la reponse
                 Sensor sensor = cyclist.getBike().getSensor();
-                String result = "idActivity=" + activity.getIdActivity() + "#sensorNUMPWR=" + sensor.getNumPwr() + "#sensorNUMSPEEDANDCADENCE=" + sensor.getNumCadAndSpd() + "#sensorNUMHRM=" + sensor.getNumHrm();
+                //idact:pwr:spdcad:hrm
+                String result =  activity.getIdActivity() + "#" + sensor.getNumPwr() + "#" + sensor.getNumCadAndSpd() + "#" + sensor.getNumHrm();
                 return result;
                 
              
@@ -195,11 +196,12 @@ public class CyclistREST {
     public Response send(@PathParam("addrMac") String addrMac, @PathParam("idActivity") String idActivity, @PathParam("pwr") String pwr, @PathParam("cad") String cad, @PathParam("hrm") String hrm, @PathParam("lati") String lati, @PathParam("longi") String longi, @PathParam("alti") String alti) {
 
         Response response = Response.status(400).build();
-        
+        System.out.println("addrMAC : " + addrMac);
         // chercher les infos du rider
         if (!addrMac.trim().equalsIgnoreCase("") && !idActivity.trim().equalsIgnoreCase("") && !pwr.trim().equalsIgnoreCase("")) {
             // chercher le cyclist
             Cyclist cyclist = this.findSensorCyclist(addrMac);
+            System.out.println("addrMAC : " + addrMac+"cyclist" +cyclist);
             // cyclist trouve
             if (cyclist != null) {
                 // chercher l'activite

@@ -123,7 +123,7 @@ public class DetailActivityBean implements Serializable {
 
         //remplir le graphique
         List<DataActivity> listeDataActivities = this.activityBean.getListDataActivities();
-//        int i1max = this.activity.getCyclist().getI1Max();
+//       int i1max = this.activity.getCyclist().getI1Max();
 //        int i2max = this.activity.getCyclist().getI2Max();
 //        int i3max = this.activity.getCyclist().getI3Max();
 //        int i4max = this.activity.getCyclist().getI4Max();
