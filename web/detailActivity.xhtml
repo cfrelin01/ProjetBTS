@@ -11,153 +11,7 @@
     <h:head class="w3-container" >
         <link rel="stylesheet" href="css/style.css" type="text/css"></link>
         <link rel="stylesheet" href="css/chart.css" type="text/css"></link>
-        <title>Activities management</title>
-    </h:head>
-
-    <h:body style="background-image:url(images/back.png); background-size:cover ; background-repeat: no-repeat" >   
-
-        <ui:include src="/menu.xhtml"/>
-        <br/>
-        <div id="block" align="center" > 
-            <br></br>
-            Activities management :
-            <br></br> <br></br> 
-        </div>
-
-
-        <p>
-            
-             <h:form id="formCyclist" style="display: inline-table; align-items: center">
-            
-            <p:carousel value="#{activityBean.listDataActivities}" headerText="Cyclist " var="c"  itemStyle="height:400px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:250px" circular="true">
-                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-                    
-                    <f:facet name="header">
-                        <h:graphicImage value="/imgcyclist/#{c.activity.cyclist.imgCyclist}" width="150" rendered="#{c.activity.cyclist.imgCyclist!=''}"/>
-                        <h:graphicImage value="/resources/img/anonymous.png"  width="150" rendered="#{c.activity.cyclist.imgCyclist==''}"/> 
-
-                    </f:facet>
-
-                    <h:outputText value="Nom:" />
-                    <h:outputText value="#{c.activity.cyclist.lastName}" />
- 
-                    <h:outputText value="Prenom:" />
-                    <h:outputText value="#{c.activity.cyclist.firstName}" />
-
-                    <h:outputText value="Date Naissance:" />
-                    <h:outputText value="#{c.activity.cyclist.dateBirth}" >
-                        <f:convertDateTime pattern="dd-MM-yyyy"/>
-                    </h:outputText>
-                    
-                    <h:outputText value="Computer:" />
-                    <h:outputText value="#{c.activity.cyclist.bike.computer.name}(#{c.activity.cyclist.bike.computer.addrMac})" />
-                    
-                    <h:outputText value="State:" />
-                    <h:graphicImage value="/resources/img/online.gif"  width="25" rendered="#{c.activity.cyclist.onLine==true}"/> 
-                    <h:graphicImage value="/resources/img/offline.gif"  width="25" rendered="#{c.activity.cyclist.onLine==false}"/>  
-
-                </p:panelGrid>
-            </p:carousel> 
-        </h:form>
-            
-            <h:form style="display: inline-table; align-items: center">     
-                <p:panelGrid id = "tableauForm" columns="2" >
-                    <f:facet name="header">
-                        Speed
-                    </f:facet> 
-                    <p:outputLabel value="MAX :" />
-                    <p:inputText id="SpeedMax" readonly="true"/>
-                    <p:outputLabel value="AVG : " />
-                    <p:inputText id="SpeedAvg" readonly="true"/>  
-                </p:panelGrid>
-            </h:form>
-
-
-            <h:form style="display: inline-table; align-items: center"> 
-                <p:panelGrid id = "tableauForm" columns="2" >
-
-                    <f:facet name="header">
-                        Power
-                    </f:facet>
-                    <p:outputLabel value="MAX :" />
-                    <p:inputText id="PwrMax" readonly="true"/>
-                    <p:outputLabel value="AVG : " />
-                   <p:inputText id="PwrAvg" readonly="true"/>
-                </p:panelGrid>
-            </h:form>
         
-
-        <h:form style="display: inline-table; align-items: center"> 
-                <p:panelGrid id = "tableauForm" columns="2" >
-
-                <f:facet name="header">
-                    Cadence
-                </f:facet>  
-                <p:outputLabel value="MAX :" />
-                <p:inputText id="CadMax" readonly="true"/> 
-                <p:outputLabel value="AVG : " />
-                <p:inputText id="CadAvg" readonly="true"/>
-            </p:panelGrid>
-        </h:form>
-            
-         <h:form style="display: inline-table; align-items: center"> 
-                <p:panelGrid id = "tableauForm" columns="2" >
- 
-                 <f:facet name="header">
-                     HRM
-                 </f:facet>
-                 <p:outputLabel value="MAX :" />
-                 <p:inputText id="HrmMax" readonly="true"/>
-                 <p:outputLabel value="AVG : " />
-                 <p:inputText id="HrmAvg" readonly="true"/>
-                   
-             </p:panelGrid>
-         </h:form>
-       </p>
-        
-
-        <!--
-                <h:outputText value="#{detailActivityBean.maxSpeed}" />
-        
-                <h:form style="margin-bottom: 100px; margin-top: 50px; margin-left: 25%;margin-right: 33%" >     
-                    <h:inputHidden value="#{carBean.car.idCar}"/>
-                    <p:panelGrid id = "tableauForm" columns="4" >
-        
-                        <h:outputText value="test#{detailActivityBean.maxSpeed}" />
-                        <p:outputLabel value="test#{detailActivityBean.maxSpeed} " />
-        
-                    </p:panelGrid>
-        
-                </h:form>-->
-
-
-        <h:form id="Powerform">
-            <p:poll interval="1" update="Power" />
-            <p:chart id="Power" type="line" model="#{detailActivityBean.lineModel}" style="background-color: blanchedalmond; width: 100%;height:500px;"/>
-        </h:form>
-
-        <br></br>
-        <br></br>
-        <br></br>
-
-        <h:form id="Cadence">
-            <p:poll interval="1" update="Cadence" />
-            <p:chart type="line" model="#{detailActivityBean.lineModelCad}" style="background-color: blanchedalmond; width: 100%;height:500px;"/>
-        </h:form>
-
-        <br></br>
-        <br></br>
-        <br></br>
-
-        <h:form id="HRM">
-            <p:poll interval="1" update="HRM" />
-            <p:chart type="line" model="#{detailActivityBean.lineModelHrm}" style="background-color: blanchedalmond; width: 100%;height:500px"/>
-        </h:form>
-
-        <br></br>
-        <br></br>
-        <br></br>
-
         <!-- carte openstreetMap-->
         <meta charset="utf-8"></meta>
         <!-- Nous chargeons les fichiers CDN de Leaflet. Le CSS AVANT le JS -->
@@ -196,12 +50,86 @@
                 height:400px;
             }
         </style>
-        <title>Carte</title>
-        <body>
-            <div id="map">
-                <!-- Ici s'affichera la carte -->
-            </div>
-        </body>
+        
+        
+        
+        <title>Activities management</title>
+    </h:head>
+
+    <h:body style="background-image:url(images/back.png); background-size:cover ; background-repeat: no-repeat" >   
+
+        <ui:include src="/menu.xhtml"/>
+        <br/>
+        <div id="block" align="center" > 
+            <br/>
+            Activities management :
+            <br/><br/> 
+        </div>
+
+        
+        
+        <!-- formulaire live pwr -->
+        <h:form style="display: inline-table; align-items: center">
+                <p:poll interval="3" update="pwr" />
+                <p:panelGrid id ="panPWR" columns="2" >
+                    <f:facet name="header">Power</f:facet>
+                    <p:outputLabel value="PWR :" />
+                    <p:outputLabel id="pwr" value="#{activityBean.liveDataActivity.pwr} Watts"/>
+                </p:panelGrid>
+        </h:form><br/>
+    
+
+        <!-- formulaire live cad -->
+        <h:form style="display: inline-table; align-items: center"> 
+                <p:poll interval="3" update="cad" />
+                <p:panelGrid id ="panCAD" columns="2" >
+                    <f:facet name="header">CAD</f:facet>
+                    <p:outputLabel value="CAD :" />
+                    <p:outputLabel id="cad" value="#{activityBean.liveDataActivity.cad} RPM"/>
+                </p:panelGrid>
+        </h:form><br/>
+        
+        
+        <!-- formulaire live hrm -->
+        <h:form style="display: inline-table; align-items: center"> 
+                <p:poll interval="3" update="hrm" />
+                <p:panelGrid id ="panHRM" columns="2" >
+                    <f:facet name="header">HRM</f:facet>
+                    <p:outputLabel value="HRM :" />
+                    <p:outputLabel id="hrm" value="#{activityBean.liveDataActivity.hrm} HRM"/>
+                </p:panelGrid>
+        </h:form><br/>
+        
+        
+        
+        <br/><br/>
+        
+        <h:form id="Powerform">
+            <p:poll interval="1" update="Power" />
+            <p:chart id="Power" type="line" model="#{detailActivityBean.lineModel}" style="background-color: blanchedalmond; width: 100%;height:500px;"/>
+        </h:form>
+
+        <br/><br/><br/><br/>
+       
+
+        <h:form id="Cadence">
+            <p:poll interval="1" update="Cadence" />
+            <p:chart type="line" model="#{detailActivityBean.lineModelCad}" style="background-color: blanchedalmond; width: 100%;height:500px;"/>
+        </h:form>
+
+        <br/><br/><br/><br/>
+
+        <h:form id="HRM">
+            <p:poll interval="1" update="HRM" />
+            <p:chart type="line" model="#{detailActivityBean.lineModelHrm}" style="background-color: blanchedalmond; width: 100%;height:500px"/>
+        </h:form>
+
+        <br/><br/><br/><br/>
+
+        
+        <!-- Ici s'affichera la carte -->
+        <div id="map">&nbsp;</div>
+
 
     </h:body>
 </html>

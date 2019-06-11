@@ -1,6 +1,7 @@
 package com.stemarie.controleur;
 
 import com.stemarie.javabeans.Activity;
+import com.stemarie.javabeans.Cyclist;
 import com.stemarie.javabeans.DataActivity;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -16,6 +17,7 @@ import javax.persistence.Query;
 import javax.transaction.UserTransaction;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartSeries;
 import org.primefaces.model.chart.DateAxis;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
@@ -40,13 +42,15 @@ public class DetailActivityBean implements Serializable {
     private EntityManager em;
 
     //backing bean
-    private Activity activity;
+    //private Activity activity;
 
     //graphique 
     private LineChartModel lineModelPwr;
     private LineChartModel lineModelCad;
     private LineChartModel lineModelHrm;
+    
 
+    
     //dernieres valeurs live
     private String maxSpeed ; 
         
@@ -70,8 +74,8 @@ public class DetailActivityBean implements Serializable {
         lineModelPwr = this.initLinearModel();
         lineModelPwr.setTitle("Power");
         lineModelPwr.setLegendPosition("ne");
-        lineModelPwr.setSeriesColors("c00f92,f52323,f79833,f0e531,33f83f,60d1ed,000000");
-        //lineModelPwr.setShadow(true);
+        lineModelPwr.setSeriesColors("f52323,f79833,f0e531,33f83f,60d1ed,000000");
+        //lineModelPwr.setShadow(false);
         Axis yAxis = lineModelPwr.getAxis(AxisType.Y);
         Axis xAxis = lineModelPwr.getAxis(AxisType.X);
 
@@ -118,20 +122,16 @@ public class DetailActivityBean implements Serializable {
         LineChartSeries i5 = new LineChartSeries();
         i5.setLabel("I5");
         i5.setFill(true);
-        
-        LineChartSeries i6 = new LineChartSeries();
-        i6.setLabel("I6");
-        i6.setFill(true);
-
 
         //remplir le graphique
         List<DataActivity> listeDataActivities = this.activityBean.getListDataActivities();
-//       int i1max = this.activity.getCyclist().getI1Max();
-//        int i2max = this.activity.getCyclist().getI2Max();
-//        int i3max = this.activity.getCyclist().getI3Max();
-//        int i4max = this.activity.getCyclist().getI4Max();
-//        int i5max = this.activity.getCyclist().getI5Max();
-//        int i6max = this.activity.getCyclist().getI6Max();
+        //recuperer le cycliste en cours
+        Cyclist cyclist = this.activityBean.getActivity().getCyclist();
+        int i1max = cyclist.getI1Max();
+        int i2max = cyclist.getI2Max();
+        int i3max = cyclist.getI3Max();
+        int i4max = cyclist.getI4Max();
+        int i5max = cyclist.getI5Max();
         
        
 
@@ -150,7 +150,6 @@ public class DetailActivityBean implements Serializable {
             i3.set(sm.format(data.getTimeData()), 1200);
             i4.set(sm.format(data.getTimeData()), 1600);
             i5.set(sm.format(data.getTimeData()), 2000);
-            i6.set(sm.format(data.getTimeData()), 2400);
         
             //conserver le min
             if (compteur == 0) {
@@ -160,7 +159,7 @@ public class DetailActivityBean implements Serializable {
             //System.out.println("Ajouter le point : "+sm.format(data.getTimeData()));
             compteur++;
         }
-        model.addSeries(i6);
+        //System.out.println("Max axis : "+maxAxis);
         model.addSeries(i5);
         model.addSeries(i4);
         model.addSeries(i3);
@@ -187,6 +186,10 @@ public class DetailActivityBean implements Serializable {
         axis.setTickFormat("%d-%m-%y %H:%#M:%S");
         model.getAxes().put(AxisType.X, axis);
         
+       
+        
+        
+
         //retourner l'objet modele terminé
         return model;
     }
@@ -311,11 +314,11 @@ public class DetailActivityBean implements Serializable {
     }
 
     //recupérer les data pour l'activité courante BackingBean
-    public List<DataActivity> getListDataActivities() {
-        Query query = em.createQuery("SELECT da FROM DataActivity da WHERE da.activity=:activity");
-        query.setParameter("activity", this.activity);
-        return query.getResultList();
-    }
+//    public List<DataActivity> getListDataActivities() {
+//        Query query = em.createQuery("SELECT da FROM DataActivity da WHERE da.activity=:activity");
+//        query.setParameter("activity", this.activity);
+//        return query.getResultList();
+//    }
 
     // getter et setter 
     public LineChartModel getLineModel() {

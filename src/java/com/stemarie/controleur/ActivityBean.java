@@ -1,15 +1,11 @@
 package com.stemarie.controleur;
 
 import com.stemarie.javabeans.Activity;
-import com.stemarie.javabeans.Bike;
 import com.stemarie.javabeans.DataActivity;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.Resource;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,9 +26,10 @@ public class ActivityBean implements Serializable {
     @PersistenceContext
     private EntityManager em;
 
-
+    //activite en cours
     private Activity activity;
 
+    
     public ActivityBean() {
 
     }
@@ -48,7 +45,7 @@ public class ActivityBean implements Serializable {
     
     public String detailActivity(Activity activity){
         this.activity=activity;
-        System.out.println("ACTIVITE : "+this.activity);
+//        System.out.println("ACTIVITE : "+this.activity);
         return "detailActivity";
     }
     
@@ -70,6 +67,34 @@ public class ActivityBean implements Serializable {
 
         }
     }
+
     
+    
+    
+    //recuperer la derniere dataActivity pour l'activity en live
+    public DataActivity getLiveDataActivity() {
+        Query query = em.createQuery("SELECT da FROM DataActivity da WHERE da.activity=:activity ORDER BY da.idDataActivity DESC");
+        query.setParameter("activity", this.activity);
+        query.setMaxResults(1);
+        List<DataActivity> lda=query.getResultList();
+        //retourner la derniere DataActivity
+        return lda.get(0); 
+    } 
+    
+    
+    
+    //getters et setters
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+    }
+    
+    
+    
+    
+
   
 }
