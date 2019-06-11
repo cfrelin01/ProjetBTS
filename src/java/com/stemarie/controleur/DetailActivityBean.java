@@ -44,7 +44,7 @@ public class DetailActivityBean implements Serializable {
     private Activity activity;
 
     //graphique 
-    private LineChartModel lineModel;
+    private LineChartModel lineModelPwr;
     private LineChartModel lineModelCad;
     private LineChartModel lineModelHrm;
     
@@ -73,14 +73,13 @@ public class DetailActivityBean implements Serializable {
     private void createLineModels(){
 
 //charger les graphiques dans la base de données
-        lineModel = this.initLinearModel();
-        lineModel.setTitle("Power");
-        lineModel.setLegendPosition("ne");
-        lineModel.setSeriesColors("f52323,f79833,f0e531,33f83f,60d1ed,000000");
-        lineModel.setShadow(false);
-        
-        Axis yAxis = lineModel.getAxis(AxisType.Y);
-        Axis xAxis = lineModel.getAxis(AxisType.X);
+        lineModelPwr = this.initLinearModel();
+        lineModelPwr.setTitle("Power");
+        lineModelPwr.setLegendPosition("ne");
+        lineModelPwr.setSeriesColors("f52323,f79833,f0e531,33f83f,60d1ed,000000");
+        lineModelPwr.setShadow(false);
+        Axis yAxis = lineModelPwr.getAxis(AxisType.Y);
+        Axis xAxis = lineModelPwr.getAxis(AxisType.X);
 
         lineModelCad = this.initLinearModelCad();
         lineModelCad.setTitle("Cadence");
@@ -113,13 +112,15 @@ public class DetailActivityBean implements Serializable {
         LineChartSeries i2 = new LineChartSeries();
         i2.setLabel("I2");
         i2.setFill(true);
+        
         BarChartSeries i3 = new BarChartSeries();
         i3.setLabel("I3");
+        
         BarChartSeries i4 = new BarChartSeries();
         i4.setLabel("I4");
+        
         BarChartSeries i5 = new BarChartSeries();
         i5.setLabel("I5");
-       
 
         //remplir le graphique
         List<DataActivity> listeDataActivities = this.activityBean.getListDataActivities();
@@ -192,7 +193,7 @@ public class DetailActivityBean implements Serializable {
     
     //générer les lignes du graphique
     private LineChartModel initLinearModelCad() {
-        LineChartModel model = new LineChartModel();
+        LineChartModel model     = new LineChartModel();
 
         //créer le trait des watts (PWR)
       
@@ -249,6 +250,8 @@ public class DetailActivityBean implements Serializable {
         return model;
     }
     
+    
+    //graphique HRM
     //générer les lignes du graphique
     private LineChartModel initLinearModelHrm() {
         LineChartModel model = new LineChartModel();
@@ -317,11 +320,11 @@ public class DetailActivityBean implements Serializable {
     // getter et setter 
     public LineChartModel getLineModel() {
         this.createLineModels();
-        return lineModel;
+        return lineModelPwr;
     }
 
     public void setLineModel(LineChartModel lineModel) {
-        this.lineModel = lineModel;
+        this.lineModelPwr = lineModel;
     }
 
     public LineChartModel getLineModelCad() {
