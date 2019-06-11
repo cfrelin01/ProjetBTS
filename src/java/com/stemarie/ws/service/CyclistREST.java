@@ -11,6 +11,7 @@ import com.stemarie.javabeans.Cyclist;
 import com.stemarie.javabeans.DataActivity;
 import com.stemarie.javabeans.Sensor;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -151,39 +152,41 @@ public class CyclistREST {
     
     
     @GET
-    @Path("/disconnect/{addrMac}/{idActivity}")
-    public String disconnect(@PathParam("addrMac") String addrMac, @PathParam("idActivity") String idActivity) {
+    @Path("/disconnect/{addrMac}")
+    public String disconnect(@PathParam("addrMac") String addrMac) {
 
         // chercher les infos du cyclist
-        if (!addrMac.equalsIgnoreCase("") && !idActivity.equalsIgnoreCase("")) {
+        if (!addrMac.equalsIgnoreCase("")) {
             // chercher le cyclist
             Cyclist cyclist = this.findSensorCyclist(addrMac);
             Computer computer = this.findComputer(addrMac);
+//            System.out.println("COMPUTER "+computer);
+            
+            
             // cyclist trouve
             if (cyclist != null) {
-                // fin de l'activite
-                int idAc = Integer.parseInt(idActivity);
-                Activity activity = this.findActivity(idAc);
-                if (activity != null) {
-                    activity.setStopTime(new Date());
-                    this.editActivity(activity);
+
+                List<Activity> listeAcitivities=this.findActivitiesCyclist(addrMac);
+                
+                for(Activity a:listeAcitivities){
+                    a.setStopTime(new Date());
+                    this.editActivity(a);
                 }
+
                 // deconnecter le cyclist
                 cyclist.setOnLine(false);
                 this.editCyclist(cyclist);
-                return "1";
             }
-            if (computer != null) {
+            
+            if (computer!=null) {
                 computer.setOnOff(false);
-                
-                em.merge(computer);
+                System.out.println("ICI");
+                this.editComputer(computer);
             }
             
 
         }
         
-      
-
         return "0";
     }
     
@@ -259,6 +262,18 @@ public class CyclistREST {
     
     
     
+    
+    //trouver un cycliste a partir de l'adresse mac
+    public List<Activity> findActivitiesCyclist(String addrMac) {
+        // chercher le cyclist
+        Query query = em.createQuery("SELECT listActivities FROM Activity listActivities WHERE listActivities.cyclist.bike.computer.addrMac=:addrMac");
+        query.setParameter("addrMac", addrMac);
+        return query.getResultList();
+    }
+    
+    
+    
+    
     //trouver un cycliste a partir de l'adresse mac
     public Cyclist findSensorCyclist(String addrMac) {
         // chercher le cyclist
@@ -305,6 +320,23 @@ public class CyclistREST {
         }
         return null;
     }
+    
+    
+    
+    //editer un computer
+    public Computer editComputer(Computer computer) {
+        
+        System.out.println("MERGE "+computer);
+//        try {
+//            Computer c = em.merge(computer);
+//            em.flush();
+//            return c;
+//        } catch (Exception e) {
+//
+//        }
+        return null;
+    }
+    
 
     
     // trouver une activite a partir de son id
