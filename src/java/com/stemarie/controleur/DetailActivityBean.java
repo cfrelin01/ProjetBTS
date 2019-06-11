@@ -16,7 +16,6 @@ import javax.persistence.Query;
 import javax.transaction.UserTransaction;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
-import org.primefaces.model.chart.BarChartSeries;
 import org.primefaces.model.chart.DateAxis;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
@@ -44,18 +43,13 @@ public class DetailActivityBean implements Serializable {
     private Activity activity;
 
     //graphique 
-    private LineChartModel lineModel;
+    private LineChartModel lineModelPwr;
     private LineChartModel lineModelCad;
     private LineChartModel lineModelHrm;
-    
 
-    
     //dernieres valeurs live
     private String maxSpeed ; 
         
-        
-    
-    
 
     //injecter le controleur d'activite pour recuperer l'activite en cours
     @Inject
@@ -73,14 +67,13 @@ public class DetailActivityBean implements Serializable {
     private void createLineModels(){
 
 //charger les graphiques dans la base de données
-        lineModel = this.initLinearModel();
-        lineModel.setTitle("Power");
-        lineModel.setLegendPosition("ne");
-        lineModel.setSeriesColors("f52323,f79833,f0e531,33f83f,60d1ed,000000");
-        lineModel.setShadow(false);
-        
-        Axis yAxis = lineModel.getAxis(AxisType.Y);
-        Axis xAxis = lineModel.getAxis(AxisType.X);
+        lineModelPwr = this.initLinearModel();
+        lineModelPwr.setTitle("Power");
+        lineModelPwr.setLegendPosition("ne");
+        lineModelPwr.setSeriesColors("c00f92,f52323,f79833,f0e531,33f83f,60d1ed,000000");
+        //lineModelPwr.setShadow(true);
+        Axis yAxis = lineModelPwr.getAxis(AxisType.Y);
+        Axis xAxis = lineModelPwr.getAxis(AxisType.X);
 
         lineModelCad = this.initLinearModelCad();
         lineModelCad.setTitle("Cadence");
@@ -113,13 +106,23 @@ public class DetailActivityBean implements Serializable {
         LineChartSeries i2 = new LineChartSeries();
         i2.setLabel("I2");
         i2.setFill(true);
-        BarChartSeries i3 = new BarChartSeries();
+        
+        LineChartSeries i3 = new LineChartSeries();
         i3.setLabel("I3");
-        BarChartSeries i4 = new BarChartSeries();
+        i3.setFill(true);
+        
+        LineChartSeries i4 = new LineChartSeries();
         i4.setLabel("I4");
-        BarChartSeries i5 = new BarChartSeries();
+        i4.setFill(true);
+        
+        LineChartSeries i5 = new LineChartSeries();
         i5.setLabel("I5");
-       
+        i5.setFill(true);
+        
+        LineChartSeries i6 = new LineChartSeries();
+        i6.setLabel("I6");
+        i6.setFill(true);
+
 
         //remplir le graphique
         List<DataActivity> listeDataActivities = this.activityBean.getListDataActivities();
@@ -128,6 +131,7 @@ public class DetailActivityBean implements Serializable {
 //        int i3max = this.activity.getCyclist().getI3Max();
 //        int i4max = this.activity.getCyclist().getI4Max();
 //        int i5max = this.activity.getCyclist().getI5Max();
+//        int i6max = this.activity.getCyclist().getI6Max();
         
        
 
@@ -146,6 +150,7 @@ public class DetailActivityBean implements Serializable {
             i3.set(sm.format(data.getTimeData()), 1200);
             i4.set(sm.format(data.getTimeData()), 1600);
             i5.set(sm.format(data.getTimeData()), 2000);
+            i6.set(sm.format(data.getTimeData()), 2400);
         
             //conserver le min
             if (compteur == 0) {
@@ -155,7 +160,7 @@ public class DetailActivityBean implements Serializable {
             //System.out.println("Ajouter le point : "+sm.format(data.getTimeData()));
             compteur++;
         }
-        //System.out.println("Max axis : "+maxAxis);
+        model.addSeries(i6);
         model.addSeries(i5);
         model.addSeries(i4);
         model.addSeries(i3);
@@ -182,17 +187,13 @@ public class DetailActivityBean implements Serializable {
         axis.setTickFormat("%d-%m-%y %H:%#M:%S");
         model.getAxes().put(AxisType.X, axis);
         
-       
-        
-        
-
         //retourner l'objet modele terminé
         return model;
     }
     
     //générer les lignes du graphique
     private LineChartModel initLinearModelCad() {
-        LineChartModel model = new LineChartModel();
+        LineChartModel model     = new LineChartModel();
 
         //créer le trait des watts (PWR)
       
@@ -249,6 +250,8 @@ public class DetailActivityBean implements Serializable {
         return model;
     }
     
+    
+    //graphique HRM
     //générer les lignes du graphique
     private LineChartModel initLinearModelHrm() {
         LineChartModel model = new LineChartModel();
@@ -317,11 +320,11 @@ public class DetailActivityBean implements Serializable {
     // getter et setter 
     public LineChartModel getLineModel() {
         this.createLineModels();
-        return lineModel;
+        return lineModelPwr;
     }
 
     public void setLineModel(LineChartModel lineModel) {
-        this.lineModel = lineModel;
+        this.lineModelPwr = lineModel;
     }
 
     public LineChartModel getLineModelCad() {
