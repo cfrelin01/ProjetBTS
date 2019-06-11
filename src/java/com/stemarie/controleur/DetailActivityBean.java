@@ -16,7 +16,6 @@ import javax.persistence.Query;
 import javax.transaction.UserTransaction;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
-import org.primefaces.model.chart.BarChartSeries;
 import org.primefaces.model.chart.DateAxis;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
@@ -47,15 +46,10 @@ public class DetailActivityBean implements Serializable {
     private LineChartModel lineModelPwr;
     private LineChartModel lineModelCad;
     private LineChartModel lineModelHrm;
-    
 
-    
     //dernieres valeurs live
     private String maxSpeed ; 
         
-        
-    
-    
 
     //injecter le controleur d'activite pour recuperer l'activite en cours
     @Inject
@@ -76,8 +70,8 @@ public class DetailActivityBean implements Serializable {
         lineModelPwr = this.initLinearModel();
         lineModelPwr.setTitle("Power");
         lineModelPwr.setLegendPosition("ne");
-        lineModelPwr.setSeriesColors("f52323,f79833,f0e531,33f83f,60d1ed,000000");
-        lineModelPwr.setShadow(false);
+        lineModelPwr.setSeriesColors("c00f92,f52323,f79833,f0e531,33f83f,60d1ed,000000");
+        //lineModelPwr.setShadow(true);
         Axis yAxis = lineModelPwr.getAxis(AxisType.Y);
         Axis xAxis = lineModelPwr.getAxis(AxisType.X);
 
@@ -113,14 +107,22 @@ public class DetailActivityBean implements Serializable {
         i2.setLabel("I2");
         i2.setFill(true);
         
-        BarChartSeries i3 = new BarChartSeries();
+        LineChartSeries i3 = new LineChartSeries();
         i3.setLabel("I3");
+        i3.setFill(true);
         
-        BarChartSeries i4 = new BarChartSeries();
+        LineChartSeries i4 = new LineChartSeries();
         i4.setLabel("I4");
+        i4.setFill(true);
         
-        BarChartSeries i5 = new BarChartSeries();
+        LineChartSeries i5 = new LineChartSeries();
         i5.setLabel("I5");
+        i5.setFill(true);
+        
+        LineChartSeries i6 = new LineChartSeries();
+        i6.setLabel("I6");
+        i6.setFill(true);
+
 
         //remplir le graphique
         List<DataActivity> listeDataActivities = this.activityBean.getListDataActivities();
@@ -129,6 +131,7 @@ public class DetailActivityBean implements Serializable {
 //        int i3max = this.activity.getCyclist().getI3Max();
 //        int i4max = this.activity.getCyclist().getI4Max();
 //        int i5max = this.activity.getCyclist().getI5Max();
+//        int i6max = this.activity.getCyclist().getI6Max();
         
        
 
@@ -147,6 +150,7 @@ public class DetailActivityBean implements Serializable {
             i3.set(sm.format(data.getTimeData()), 1200);
             i4.set(sm.format(data.getTimeData()), 1600);
             i5.set(sm.format(data.getTimeData()), 2000);
+            i6.set(sm.format(data.getTimeData()), 2400);
         
             //conserver le min
             if (compteur == 0) {
@@ -156,7 +160,7 @@ public class DetailActivityBean implements Serializable {
             //System.out.println("Ajouter le point : "+sm.format(data.getTimeData()));
             compteur++;
         }
-        //System.out.println("Max axis : "+maxAxis);
+        model.addSeries(i6);
         model.addSeries(i5);
         model.addSeries(i4);
         model.addSeries(i3);
@@ -183,10 +187,6 @@ public class DetailActivityBean implements Serializable {
         axis.setTickFormat("%d-%m-%y %H:%#M:%S");
         model.getAxes().put(AxisType.X, axis);
         
-       
-        
-        
-
         //retourner l'objet modele terminé
         return model;
     }
