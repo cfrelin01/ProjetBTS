@@ -22,7 +22,7 @@
             <p:carousel value="#{cyclistBean.listeCyclists}" headerText="Cyclist " var="c"  style="margin-top: 50px" itemStyle="text-align:center" responsive="true">
                 <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                     <f:facet name="header">
-                        <h:graphicImage value="/imgcyclist/#{c.imgCyclist}" width="150" rendered="#{c.imgCyclist!=''}"/>
+                        <h:graphicImage value="/imgcyclist/#{c.imgCyclist}" width="150" rendered="#{c.imgCyclist!=''}" />
                         <h:graphicImage value="/resources/img/anonymous.png"  width="150" rendered="#{c.imgCyclist==''}"/> 
 
                     </f:facet>
@@ -55,7 +55,7 @@
                 <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                     <f:facet name="header">
 
-                        <h:graphicImage value="/resources/img/computer.png"  width="100"/> 
+                        <h:graphicImage value="/resources/img/computer.png"  width="50"/> 
 
                     </f:facet>
 
@@ -86,8 +86,8 @@
                     
                     <f:facet name="header">
                         
-                        <h:graphicImage value="/resources/img/online.gif"  width="100" rendered="#{c.stopTime==null}"/> 
-                        <h:graphicImage value="/resources/img/offline.gif"  width="100" rendered="#{c.stopTime!=null}"/> 
+                        <h:graphicImage value="/resources/img/online.gif"  width="25" rendered="#{c.stopTime==null}"/> 
+                        <h:graphicImage value="/resources/img/offline.gif"  width="25" rendered="#{c.stopTime!=null}"/> 
 
                     </f:facet>
                     

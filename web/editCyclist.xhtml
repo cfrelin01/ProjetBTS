@@ -25,7 +25,7 @@
         <br></br> 
 
         <!-- formulaire d'edition -->
-        <p:panel id="toggleable" header="Formulaire" collapsed="true" toggleable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
+        <p:panel id="toggleable" header="Formulaire" collapsed="false" toggleable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
             <h:form id="formCyclist" enctype="multipart/form-data" style="margin-bottom: 100px; margin-top: 50px; margin-left: 25%;margin-right: 33%" >     
                 <h:inputHidden value="#{cyclistBean.cyclist.idCyclist}"/>  
                 <h:inputHidden value="#{cyclistBean.cyclist.imgCyclist}"/>
@@ -146,7 +146,7 @@
                     <br></br>
                     <h:outputText value="I4(#{c.i4Min} / #{c.i4Max})" />
                     <br></br>
-                    <h:outputText value="I1(#{c.i5Min} / #{c.i5Max})" />
+                    <h:outputText value="I5(#{c.i5Min} / #{c.i5Max})" />
                 </p:column>
                 <p:column headerText="bike">
                     <h:outputText value="#{c.bike.serialNum} (#{c.bike.typeBike})" />

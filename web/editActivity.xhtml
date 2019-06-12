@@ -53,8 +53,8 @@
                     </h:outputText>
                 </p:column>
                 <p:column headerText="State:">
-                    <h:graphicImage value="/resources/img/online.gif"  width="50" rendered="#{a.stopTime==null}"/> 
-                    <h:graphicImage value="/resources/img/offline.gif"  width="50" rendered="#{a.stopTime!=null}"/> 
+                    <h:graphicImage value="/resources/img/online.gif"  width="25" rendered="#{a.stopTime==null}"/> 
+                    <h:graphicImage value="/resources/img/offline.gif"  width="25" rendered="#{a.stopTime!=null}"/> 
                 </p:column>
                 <p:column headerText="Action" colspan="2" >
                     <p:commandButton id="buttonDetail" action="#{activityBean.detailActivity(a)}" ajax="false" icon="fa fa-search [&#xf1f8;]"/>&nbsp;&nbsp;

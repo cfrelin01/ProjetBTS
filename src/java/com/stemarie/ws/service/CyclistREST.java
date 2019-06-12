@@ -180,7 +180,6 @@ public class CyclistREST {
             
             if (computer!=null) {
                 computer.setOnOff(false);
-                
                 this.editComputer(computer);
             }
             
@@ -325,8 +324,7 @@ public class CyclistREST {
     
     //editer un computer
     public Computer editComputer(Computer computer) {
-        
-        
+       
         try {
             Computer c = em.merge(computer);
             em.flush();

@@ -22,7 +22,7 @@
 
         <br></br>
 
-        <p:panel id="toggleable" header="Formulaire" collapsed="true" toggleable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
+        <p:panel id="toggleable" header="Formulaire" collapsed="false" toggleable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
             <h:form style="width:80%;margin-bottom: 100px; margin-top: 50px; margin-left: 25%;margin-right: 25%">     
 
                 <h:inputHidden value="#{bikeBean.bike.idBike}"/>
@@ -46,7 +46,7 @@
 
                     <p:selectOneMenu id="computer" required="true" value="#{bikeBean.bike.computer.idComputer}">
                         <f:selectItem itemLabel="Veuillez choisir un compteur" itemValue="" />
-                        <f:selectItems value="#{computerBean.listerComputerWithoutBike}" var="computer" itemLabel="#{computer.name}" itemValue="#{computer.idComputer}" />
+                        <f:selectItems value="#{computerBean.listerComputer}" var="computer" itemLabel="#{computer.name}" itemValue="#{computer.idComputer}" />
                     </p:selectOneMenu>
 
                     <p:outputLabel  value="Sensors :" />

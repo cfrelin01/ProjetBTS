@@ -61,7 +61,6 @@ public class ComputerBean implements Serializable {
     public List<Computer> getListerComputer() {
         Query query = em.createNamedQuery("Computer.findAll");
         this.listeComputer = query.getResultList();
-        System.out.println("LISTE : " + this.listeComputer.size());
         return this.listeComputer;
     }
 
