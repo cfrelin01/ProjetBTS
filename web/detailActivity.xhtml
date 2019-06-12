@@ -20,7 +20,7 @@
         <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
         crossorigin=""></script>
         <script type="text/javascript">
-            // latitude et la longitude de lons
+            // latitude et la longitude de Paris
             var lat = 48.90046;
             var lon = 2.319887;
             var macarte = null;
@@ -66,41 +66,36 @@
             <br/><br/> 
         </div>
 
-        
-        
-        <!-- formulaire live pwr -->
-        <h:form style="display: inline-table; align-items: center">
+        <p:panelGrid columns="3" style="display: inline-line ; width: 100%">
+
+            <h:form style="display: inline-block ">
                 <p:poll interval="3" update="pwr" />
                 <p:panelGrid id ="panPWR" columns="2" >
                     <f:facet name="header">Power</f:facet>
                     <p:outputLabel value="PWR :" />
                     <p:outputLabel id="pwr" value="#{activityBean.liveDataActivity.pwr} Watts"/>
                 </p:panelGrid>
-        </h:form><br/>
+        </h:form>
     
-
-        <!-- formulaire live cad -->
-        <h:form style="display: inline-table; align-items: center"> 
+        <h:form style="display: inline-block "> 
                 <p:poll interval="3" update="cad" />
                 <p:panelGrid id ="panCAD" columns="2" >
                     <f:facet name="header">CAD</f:facet>
                     <p:outputLabel value="CAD :" />
                     <p:outputLabel id="cad" value="#{activityBean.liveDataActivity.cad} RPM"/>
                 </p:panelGrid>
-        </h:form><br/>
+        </h:form>
         
-        
-        <!-- formulaire live hrm -->
-        <h:form style="display: inline-table; align-items: center"> 
+        <h:form style="display: inline-block"> 
                 <p:poll interval="3" update="hrm" />
                 <p:panelGrid id ="panHRM" columns="2" >
                     <f:facet name="header">HRM</f:facet>
                     <p:outputLabel value="HRM :" />
                     <p:outputLabel id="hrm" value="#{activityBean.liveDataActivity.hrm} HRM"/>
                 </p:panelGrid>
-        </h:form><br/>
-        
-        
+        </h:form>
+        </p:panelGrid>
+           
         
         <br/><br/>
         
