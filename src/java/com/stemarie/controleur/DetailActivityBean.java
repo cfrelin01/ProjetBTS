@@ -62,7 +62,7 @@ public class DetailActivityBean implements Serializable {
     //lancement automatique lors d'un appel
     @PostConstruct
     public void init() {
-        System.out.println("Merci de générer le graphique :" + activityBean.getListDataActivities());
+        
         this.createLineModels();
         //createDateModel();
     }
@@ -145,11 +145,11 @@ public class DetailActivityBean implements Serializable {
         //parcourir les données de l'activité
         for (DataActivity data : listeDataActivities) {
             pwr.set(sm.format(data.getTimeData()), data.getPwr());
-            i1.set(sm.format(data.getTimeData()), 400);
-            i2.set(sm.format(data.getTimeData()), 800);
-            i3.set(sm.format(data.getTimeData()), 1200);
-            i4.set(sm.format(data.getTimeData()), 1600);
-            i5.set(sm.format(data.getTimeData()), 2000);
+            i1.set(sm.format(data.getTimeData()), i1max);
+            i2.set(sm.format(data.getTimeData()), i2max);
+            i3.set(sm.format(data.getTimeData()), i3max);
+            i4.set(sm.format(data.getTimeData()), i4max);
+            i5.set(sm.format(data.getTimeData()), i5max);
         
             //conserver le min
             if (compteur == 0) {

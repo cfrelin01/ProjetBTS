@@ -60,13 +60,13 @@ public class CyclistREST {
     @Path("/offCompute/{addrMac}")
     public String offCompute(@PathParam("addrMac") String addrMac) {
 
-        System.out.println("addrMAC : " + addrMac);
+        
 
         // chercher les infos du cyclist
         if (!addrMac.equalsIgnoreCase("")) {
             // chercher le rider et 
             Computer computer = this.findComputer(addrMac);
-            System.out.println("Computer trouvé : " + computer);
+            
             // computer trouve
             if (computer != null) {
                 computer.setOnOff(false);
@@ -82,13 +82,13 @@ public class CyclistREST {
     @Path("/onoff/{addrMac}")
     public String onoff(@PathParam("addrMac") String addrMac) {
 
-        System.out.println("addrMAC : " + addrMac);
+        
 
         // chercher les infos du cyclist
         if (!addrMac.equalsIgnoreCase("")) {
             // chercher le rider et 
             Computer computer = this.findComputer(addrMac);
-            System.out.println("Computer trouvé : " + computer);
+            
             // computer trouve
             if (computer != null) {
                 computer.setOnOff(true);
@@ -109,13 +109,13 @@ public class CyclistREST {
     @Path("/connect/{addrMac}")
     public String connect(@PathParam("addrMac") String addrMac) {
 
-        System.out.println("addrMAC : " + addrMac);
+        
 
         // chercher les infos du cyclist
         if (!addrMac.equalsIgnoreCase("")) {
             // chercher le rider et 
             Cyclist cyclist = this.findSensorCyclist(addrMac);
-            System.out.println("Cycliste trouvé : " + cyclist);
+            
          
             // cyclist trouve
             if (cyclist != null) {
@@ -180,7 +180,7 @@ public class CyclistREST {
             
             if (computer!=null) {
                 computer.setOnOff(false);
-                System.out.println("ICI");
+                
                 this.editComputer(computer);
             }
             
@@ -199,12 +199,12 @@ public class CyclistREST {
     public Response send(@PathParam("addrMac") String addrMac, @PathParam("idActivity") String idActivity, @PathParam("pwr") String pwr, @PathParam("cad") String cad, @PathParam("hrm") String hrm, @PathParam("lati") String lati, @PathParam("longi") String longi, @PathParam("alti") String alti) {
 
         Response response = Response.status(400).build();
-        System.out.println("addrMAC : " + addrMac);
+        
         // chercher les infos du rider
         if (!addrMac.trim().equalsIgnoreCase("") && !idActivity.trim().equalsIgnoreCase("") && !pwr.trim().equalsIgnoreCase("")) {
             // chercher le cyclist
             Cyclist cyclist = this.findSensorCyclist(addrMac);
-            System.out.println("addrMAC : " + addrMac+"cyclist" +cyclist);
+            
             // cyclist trouve
             if (cyclist != null) {
                 // chercher l'activite
@@ -326,14 +326,14 @@ public class CyclistREST {
     //editer un computer
     public Computer editComputer(Computer computer) {
         
-        System.out.println("MERGE "+computer);
-//        try {
-//            Computer c = em.merge(computer);
-//            em.flush();
-//            return c;
-//        } catch (Exception e) {
-//
-//        }
+        
+        try {
+            Computer c = em.merge(computer);
+            em.flush();
+            return c;
+        } catch (Exception e) {
+
+        }
         return null;
     }
     
