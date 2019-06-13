@@ -48,6 +48,7 @@ public class DetailActivityBean implements Serializable {
     private LineChartModel lineModelPwr;
     private LineChartModel lineModelCad;
     private LineChartModel lineModelHrm;
+    private LineChartModel lineModelTime;
     
 
     
@@ -74,7 +75,7 @@ public class DetailActivityBean implements Serializable {
         lineModelPwr = this.initLinearModel();
         lineModelPwr.setTitle("Power");
         lineModelPwr.setLegendPosition("ne");
-        lineModelPwr.setSeriesColors("f52323,f79833,f0e531,33f83f,60d1ed,000000");
+        lineModelPwr.setSeriesColors("b230ff,f52323,f79833,f0e531,33f83f,60d1ed,000000");
         //lineModelPwr.setShadow(false);
         Axis yAxis = lineModelPwr.getAxis(AxisType.Y);
         Axis xAxis = lineModelPwr.getAxis(AxisType.X);
@@ -92,6 +93,13 @@ public class DetailActivityBean implements Serializable {
         lineModelHrm.setSeriesColors("4B4B43");
         Axis yAxis3 = lineModelHrm.getAxis(AxisType.Y);
         Axis xAxis3 = lineModelHrm.getAxis(AxisType.X);
+        
+        lineModelTime = this.initLinearModelTime();
+        lineModelTime.setTitle("Time");
+        lineModelTime.setLegendPosition("ne");
+        lineModelTime.setSeriesColors("4B4B43");
+        Axis yAxis4 = lineModelTime.getAxis(AxisType.Y);
+        Axis xAxis4 = lineModelTime.getAxis(AxisType.X);
 
     }
 
@@ -122,6 +130,10 @@ public class DetailActivityBean implements Serializable {
         LineChartSeries i5 = new LineChartSeries();
         i5.setLabel("I5");
         i5.setFill(true);
+        
+        LineChartSeries i6 = new LineChartSeries();
+        i6.setLabel("I6");
+        i6.setFill(true);
 
         //remplir le graphique
         List<DataActivity> listeDataActivities = this.activityBean.getListDataActivities();
@@ -132,6 +144,7 @@ public class DetailActivityBean implements Serializable {
         int i3max = cyclist.getI3Max();
         int i4max = cyclist.getI4Max();
         int i5max = cyclist.getI5Max();
+        int i6max = cyclist.getI6Max();
         
        
 
@@ -150,6 +163,7 @@ public class DetailActivityBean implements Serializable {
             i3.set(sm.format(data.getTimeData()), i3max);
             i4.set(sm.format(data.getTimeData()), i4max);
             i5.set(sm.format(data.getTimeData()), i5max);
+            i6.set(sm.format(data.getTimeData()), i6max);
         
             //conserver le min
             if (compteur == 0) {
@@ -160,6 +174,7 @@ public class DetailActivityBean implements Serializable {
             compteur++;
         }
         //System.out.println("Max axis : "+maxAxis);
+        model.addSeries(i6);
         model.addSeries(i5);
         model.addSeries(i4);
         model.addSeries(i3);
@@ -312,6 +327,64 @@ public class DetailActivityBean implements Serializable {
         //retourner l'objet modele terminé
         return model;
     }
+    
+     private LineChartModel initLinearModelTime(){
+         
+         LineChartModel model = new LineChartModel();
+
+    
+        //créer le trait cradiaque (HRM)
+        LineChartSeries timeDist = new LineChartSeries();
+        timeDist.setLabel("Time");
+
+        //remplir le graphique
+        List<DataActivity> listeDataActivities = this.activityBean.getListDataActivities();
+
+        SimpleDateFormat sm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        // myDate is the java.util.Date in yyyy-mm-dd format
+
+        String minAxis = "";
+        String maxAxis = "";
+        int compteur = 0;
+
+        //parcourir les données de l'activité
+        for (DataActivity data : listeDataActivities) {
+            
+            
+            timeDist.set(sm.format(data.getTimeData()), data.getHrm());
+            //conserver le min
+            if (compteur == 0) {
+                minAxis = sm.format(data.getTimeData());
+            }
+            maxAxis = sm.format(data.getTimeData());
+            //System.out.println("Ajouter le point : "+sm.format(data.getTimeData()));
+            compteur++;
+        }
+        //System.out.println("Max axis : "+maxAxis);
+
+        
+        
+        model.addSeries(timeDist);
+
+        //activer le clic droit pour zoomer
+        model.setTitle("Zoom for Details");
+        model.setZoom(true);
+        model.getAxis(AxisType.Y).setLabel("Values");
+
+        //format de la date 
+        DateAxis axis = new DateAxis("Time");
+        axis.setTickAngle(-70);
+        //axis.set
+        axis.setMin(minAxis);
+        axis.setMax(maxAxis);
+
+        axis.setTickFormat("%d-%m-%y %H:%#M:%S");
+        model.getAxes().put(AxisType.X, axis);
+     
+     
+         
+         return model;
+     }
 
     //recupérer les data pour l'activité courante BackingBean
 //    public List<DataActivity> getListDataActivities() {
@@ -360,6 +433,23 @@ public class DetailActivityBean implements Serializable {
         return maxSpeed;
     }
 
+    public LineChartModel getLineModelPwr() {
+        return lineModelPwr;
+    }
+
+    public void setLineModelPwr(LineChartModel lineModelPwr) {
+        this.lineModelPwr = lineModelPwr;
+    }
+
+    public LineChartModel getLineModelTime() {
+        return lineModelTime;
+    }
+
+    public void setLineModelTime(LineChartModel lineModelTime) {
+        this.lineModelTime = lineModelTime;
+    }
+    
+    
     public void setMaxSpeed(String maxSpeed) {
         
         List<DataActivity> listeDataActivities = this.activityBean.getListDataActivities();

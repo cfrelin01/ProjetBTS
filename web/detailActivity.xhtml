@@ -130,6 +130,13 @@
         </h:form>
 
         <br/><br/><br/><br/>
+        
+        <h:form id="Timedist">
+            <p:poll interval="1" update="Timedist" />
+            <p:chart type="line" model="#{detailActivityBean.lineModelTime}" style="background-color: blanchedalmond; width: 100%;height:500px"/>
+        </h:form>
+
+        <br/><br/><br/><br/>
 
 
         <!-- Ici s'affichera la carte -->
