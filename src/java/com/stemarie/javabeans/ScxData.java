@@ -23,51 +23,11 @@ public class ScxData implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idScxData;
-    private int coefRoulement;
-    private int temp;
-    private int scxOpti;
-    private int pressBaro;
-    private int rhoMax; 
-
-    public int getCoefRoulement() {
-        return coefRoulement;
-    }
-
-    public void setCoefRoulement(int coefRoulement) {
-        this.coefRoulement = coefRoulement;
-    }
-
-    public int getTemp() {
-        return temp;
-    }
-
-    public void setTemp(int temp) {
-        this.temp = temp;
-    }
-
-    public int getScxOpti() {
-        return scxOpti;
-    }
-
-    public void setScxOpti(int scxOpti) {
-        this.scxOpti = scxOpti;
-    }
-
-    public int getPressBaro() {
-        return pressBaro;
-    }
-
-    public void setPressBaro(int pressBaro) {
-        this.pressBaro = pressBaro;
-    }
-
-    public int getRhoMax() {
-        return rhoMax;
-    }
-
-    public void setRhoMax(int rhoMax) {
-        this.rhoMax = rhoMax;
-    }
+    private double coefRoulement;
+    private double temp;
+    private double scxOpti;
+    private double pressBaro;
+    private double rhoMax; 
 
     public int getIdScxData() {
         return idScxData;
@@ -76,6 +36,48 @@ public class ScxData implements Serializable {
     public void setIdScxData(int idScxData) {
         this.idScxData = idScxData;
     }
+
+    public double getCoefRoulement() {
+        return coefRoulement;
+    }
+
+    public void setCoefRoulement(double coefRoulement) {
+        this.coefRoulement = coefRoulement;
+    }
+
+    public double getTemp() {
+        return temp;
+    }
+
+    public void setTemp(double temp) {
+        this.temp = temp;
+    }
+
+    public double getScxOpti() {
+        return scxOpti;
+    }
+
+    public void setScxOpti(double scxOpti) {
+        this.scxOpti = scxOpti;
+    }
+
+    public double getPressBaro() {
+        return pressBaro;
+    }
+
+    public void setPressBaro(double pressBaro) {
+        this.pressBaro = pressBaro;
+    }
+
+    public double getRhoMax() {
+        return rhoMax;
+    }
+
+    public void setRhoMax(double rhoMax) {
+        this.rhoMax = rhoMax;
+    }
+
+    
     
     
     
