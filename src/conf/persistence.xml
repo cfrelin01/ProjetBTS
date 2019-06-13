@@ -9,7 +9,7 @@
     <class>com.stemarie.javabeans.Sensor</class>
     <class>com.stemarie.javabeans.Activity</class>
     <class>com.stemarie.javabeans.DataActivity</class>
-    <class>com.stemarie.javabeans.LogUser</class>
+    <class>com.stemarie.javabeans.ScxData</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>

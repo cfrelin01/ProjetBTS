@@ -5,8 +5,8 @@
  */
 package com.stemarie.controleur;
 
-import com.stemarie.javabeans.Car;
-import com.stemarie.javabeans.LogUser;
+
+import com.stemarie.javabeans.ScxData;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ import javax.transaction.UserTransaction;
  */
 @Named
 @RequestScoped
-public class UserBean implements Serializable {
+public class ScxDataBean implements Serializable {
     
      @Resource
     private UserTransaction utx;
@@ -34,21 +34,21 @@ public class UserBean implements Serializable {
     @PersistenceContext
     private EntityManager em;
     
-    private LogUser user = new LogUser();
-    private List<LogUser> listeUser = new ArrayList<>();
+    private ScxData scxData = new ScxData();
+    private List<ScxData> listeScxData = new ArrayList<>();
 
-    public UserBean() {
+    public ScxDataBean() {
 
     }
 
     public String ajouter() {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "" + user.getUname()+ " successfully added", "Cyclist ajouté avec succès");
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,  " successfully added", "");
 
         try {
             utx.begin();
-            em.merge(user);
+            em.merge(scxData);
             utx.commit();
-            user = new LogUser();
+            scxData = new ScxData();
         } catch (Exception e) {
 
         }
@@ -56,19 +56,19 @@ public class UserBean implements Serializable {
         //ajouter le message JSF
         FacesContext.getCurrentInstance().addMessage(null, message);
 
-        return "editUser";
+        return "editScxData";
     }
 
-    public List<LogUser> getListerUser() {
-        Query query = em.createNamedQuery("LogUser.findAll");
+    public List<ScxData> getListerScxData() {
+        Query query = em.createNamedQuery("ScxData.findAll");
         return query.getResultList();
     }
 
-    public void setListeUser(List<LogUser> listeComputer) {
-        this.listeUser = listeComputer;
+    public void setListeScxData(List<ScxData> listeScxData) {
+        this.listeScxData = listeScxData;
     }
 
-    public void supprimer(LogUser c) {
+    public void supprimer(ScxData c) {
         try {
             utx.begin();
             em.remove(em.merge(c));
@@ -78,19 +78,19 @@ public class UserBean implements Serializable {
         }
     }
 
-    public String modifier(LogUser c) {
+    public String modifier(ScxData c) {
 
-        this.user = c;
-        return "editUser.xhtml";
+        this.scxData = c;
+        return "editScxData.xhtml";
 
     }
 
-    public LogUser getUser() {
-        return user;
+    public ScxData getScxData() {
+        return scxData;
     }
 
-    public void setUser(LogUser user) {
-        this.user = user;
+    public void setUser(ScxData scxData) {
+        this.scxData = scxData;
     }
 
     
