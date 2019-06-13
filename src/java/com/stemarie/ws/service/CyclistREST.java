@@ -109,14 +109,12 @@ public class CyclistREST {
     @Path("/connect/{addrMac}")
     public String connect(@PathParam("addrMac") String addrMac) {
 
-        
-
         // chercher les infos du cyclist
         if (!addrMac.equalsIgnoreCase("")) {
             // chercher le rider et 
             Cyclist cyclist = this.findSensorCyclist(addrMac);
+            Computer computer = this.findComputer(addrMac);
             
-         
             // cyclist trouve
             if (cyclist != null) {
                 // creer une nouvelle activite pour le rider
@@ -127,22 +125,21 @@ public class CyclistREST {
                 // connecter le rider
                 cyclist.setOnLine(true);
                 this.editCyclist(cyclist);
-
+                
+                if (computer!=null) {
+                    computer.setOnOff(true);
+                    this.editComputer(computer);
+                }
+ 
                 // formater la reponse
                 Sensor sensor = cyclist.getBike().getSensor();
                 //idact:pwr:spdcad:hrm
                 String result =  activity.getIdActivity() + "#" + sensor.getNumPwr() + "#" + sensor.getNumCadAndSpd() + "#" + sensor.getNumHrm();
                 return result;
-                
-             
             }
-            
-            
-        
+                    
         }
         
-            
-       
 
         return "0";
     }
@@ -160,9 +157,7 @@ public class CyclistREST {
             // chercher le cyclist
             Cyclist cyclist = this.findSensorCyclist(addrMac);
             Computer computer = this.findComputer(addrMac);
-//            System.out.println("COMPUTER "+computer);
-            
-            
+
             // cyclist trouve
             if (cyclist != null) {
 
@@ -194,8 +189,8 @@ public class CyclistREST {
     
     
     @GET
-    @Path("/send/{addrMac}/{idActivity}/{pwr}/{cad}/{hrm}/{lati}/{longi}/{alti}")
-    public Response send(@PathParam("addrMac") String addrMac, @PathParam("idActivity") String idActivity, @PathParam("pwr") String pwr, @PathParam("cad") String cad, @PathParam("hrm") String hrm, @PathParam("lati") String lati, @PathParam("longi") String longi, @PathParam("alti") String alti) {
+    @Path("/send/{addrMac}/{idActivity}/{pwr}/{cad}/{hrm}/{speed}/{distance}/{lati}/{longi}/{alti}")
+    public Response send(@PathParam("addrMac") String addrMac, @PathParam("idActivity") String idActivity, @PathParam("pwr") String pwr, @PathParam("cad") String cad, @PathParam("hrm") String hrm, @PathParam("speed") String speed, @PathParam("distance") String distance, @PathParam("lati") String lati, @PathParam("longi") String longi, @PathParam("alti") String alti) {
 
         Response response = Response.status(400).build();
         
@@ -219,6 +214,8 @@ public class CyclistREST {
                     da.setHrm(Integer.parseInt(hrm));
                     da.setGpsLatitude(lati);
                     da.setGpsLongitude(longi);
+                    da.setSpeed(speed);
+                    da.setDistance(distance);
                     // enregistrer l'activite                     
                     da.setActivity(activity);
                     // coordonnees GPS

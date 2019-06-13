@@ -29,7 +29,8 @@ public class DataActivity implements Serializable {
     private int torque;
     private String gpsLatitude;
     private String gpsLongitude;
-//    private String gpsAltitude;
+    private String distance;
+    private String gpsAltitude;
     private String speed;
     private int hrm;
     @Temporal(TemporalType.TIMESTAMP)
@@ -114,14 +115,14 @@ public class DataActivity implements Serializable {
         this.activity = activity;
     }
 
-//    public String getGpsAltitude() {
-//        return gpsAltitude;
-//    }
-//
-//    public void setGpsAltitude(String gpsAltitude) {
-//        this.gpsAltitude = gpsAltitude;
-//    }
-//
+    public String getGpsAltitude() {
+        return gpsAltitude;
+    }
+
+    public void setGpsAltitude(String gpsAltitude) {
+        this.gpsAltitude = gpsAltitude;
+    }
+
     public String getSpeed() {
         return speed;
     }
@@ -130,6 +131,17 @@ public class DataActivity implements Serializable {
         this.speed = speed;
     }
 
+    public String getDistance() {
+        return distance;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
+    }
+    
+    
+    
+    
    
 
     

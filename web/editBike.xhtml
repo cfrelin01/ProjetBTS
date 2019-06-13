@@ -27,7 +27,7 @@
 
                 <h:inputHidden value="#{bikeBean.bike.idBike}"/>
 
-                <p:panelGrid id="tableauForm" columns="4">
+                <p:panelGrid id="formBike" columns="4">
                     <f:facet name="header">
                         Bike
                     </f:facet>
@@ -56,7 +56,7 @@
 
                     <f:facet name = "footer">
                         <h:panelGroup style = "display:block; text-align:center">
-                            <p:commandButton id = "buttonFormulaire" value = "Valider" action="#{bikeBean.ajouter()}" ajax="false"/>
+                            <p:commandButton id = "buttonFormulaire" value = "Valider" action="#{bikeBean.ajouter()}" ajax="true" update="messages formBike"/>
                         </h:panelGroup>
                     </f:facet>
 
@@ -68,7 +68,8 @@
 
 
 
-        <h:form>              
+        <h:form id="formTabSensor">
+             <p:poll interval="1" update="formTabSensor" />
             <p:dataTable value="#{bikeBean.listBike}" var="c"  style = "text-align:center" paginator="true" rows="10">
                 <f:facet name="header">
                     Bike list

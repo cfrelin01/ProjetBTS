@@ -24,7 +24,7 @@
         <br></br> 
 
         <p:panel id="toggleable" header="Formulaire" collapsed="false" toggleable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
-            <h:form style="margin-bottom: 100px; margin-top: 50px; margin-left: 15%;margin-right: 15%" >     
+            <h:form id="formScxData" style="margin-bottom: 100px; margin-top: 50px; margin-left: 15%;margin-right: 15%" >     
                 <h:inputHidden value="#{scxDataBean.scxData.idScxData}"/>
                 <p:panelGrid id = "tableauForm" columns="4" >
                     <f:facet name="header">
@@ -43,7 +43,7 @@
 
                     <f:facet name = "footer">
                         <h:panelGroup style = "display:block; text-align:center">
-                            <p:commandButton id = "buttonFormulaire" value = "Edit" action="#{scxDataBean.ajouter()}" ajax="false"/>
+                            <p:commandButton id = "buttonFormulaire" value = "Edit" action="#{scxDataBean.ajouter()}" ajax="true" update="messages formScxData"/>
                         </h:panelGroup>
                     </f:facet>
 
@@ -55,7 +55,8 @@
 
 
 
-        <h:form>              
+        <h:form id="formTabScxData"> 
+        <p:poll interval="1" update="formTabScxData" />            
             <p:dataTable value="#{scxDataBean.listerScxData}" var="c"  style = "text-align:center" paginator="true" rows="10">
                 <f:facet name="header">
                     Scx Data List
