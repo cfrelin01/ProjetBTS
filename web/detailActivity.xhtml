@@ -14,43 +14,6 @@
 
         <!-- carte openstreetMap-->
         <meta charset="utf-8"></meta>
-        <!-- Nous chargeons les fichiers CDN de Leaflet. Le CSS AVANT le JS -->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-              crossorigin="" />
-        <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
-        crossorigin=""></script>
-        <script type="text/javascript">
-            // latitude et la longitude de Paris
-            var lat = 48.90046;
-            var lon = 2.319887;
-            var macarte = null;
-            // Fonction d'initialisation de la carte
-            function initMap() {
-                // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
-                macarte = L.map('map').setView([lat, lon], 11);
-                // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
-                L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-                    // Il est toujours bien de laisser le lien vers la source des données
-                    attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
-                    minZoom: 1,
-                    maxZoom: 20
-                }).addTo(macarte);
-                var marker = L.marker([lat, lon]).addTo(macarte);
-                // marker.bindPopup('Lons Le Saunier ');
-                var polygon = L.polyline([[48.90046, 2.319887], [48.901163, 2.329981], [48.902008, 2.38515], [48.898444, 2.394906], [48.894578, 2.397627], [48.887109, 2.398846], [48.880409, 2.408308], [48.872892, 2.41327], [48.864376, 2.413838], [48.849234, 2.416341], [48.834539, 2.412246], [48.835798, 2.422139], [48.842577, 2.41939], [48.841528, 2.42813], [48.844818, 2.447699], [48.842089, 2.463438], [48.838891, 2.467426], [48.833133, 2.467582], [48.81906, 2.462696], [48.81714, 2.458705], [48.818232, 2.438448], [48.824054, 2.421462], [48.827615, 2.406032], [48.826079, 2.390939], [48.821214, 2.379296], [48.816314, 2.363947], [48.816036, 2.345958], [48.817011, 2.331898], [48.818247, 2.332461], [48.827142, 2.292196], [48.83249, 2.279052], [48.82792, 2.272793], [48.83398, 2.263174], [48.83481, 2.255144], [48.838822, 2.251709], [48.845555, 2.250612], [48.849702, 2.239978], [48.853517, 2.224219], [48.865183, 2.228225], [48.869069, 2.231736], [48.876435, 2.245678], [48.874264, 2.25541], [48.880387, 2.258467], [48.877968, 2.277487], [48.883923, 2.282327], [48.889472, 2.291507], [48.90046, 2.319887]]).addTo(macarte);
-
-            }
-            window.onload = function () {
-                // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
-                initMap();
-            };
-        </script>
-        <style type="text/css">
-            #map{ /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
-                height:400px;
-            }
-        </style>
-
 
 
         <title>Activities management</title>
@@ -65,6 +28,24 @@
             Activities management :
             <br/><br/> 
         </div>
+
+
+
+        <h:form> 
+            <h:form>
+                <h:outputText id="txt_count" value="#{counterView.number}"  />
+                <p:poll interval="3" listener="#{counterView.increment}" update="txt_count" />
+            </h:form>
+
+            <p:commandButton value="Play" id="play" update="" action="#{buttonView.buttonAction}" style="margin-right:20px;" />
+
+            <p:commandButton value="STOP" id="stop" update="" action="#{buttonView.buttonAction}" style="margin-right:20px;"  />
+
+        </h:form>
+
+
+        <br/><br/> <br/><br/> 
+
 
         <p:panelGrid columns="3" style="display: inline-line ; width: 100%">
 
@@ -94,20 +75,46 @@
                     <p:outputLabel id="hrm" value="#{activityBean.liveDataActivity.hrm} HRM"/>
                 </p:panelGrid>
             </h:form>
+
+            <h:form style="display: inline-block"> 
+                <p:poll interval="3" update="speed" />
+                <p:panelGrid id ="panSPEED" columns="2" >
+                    <f:facet name="header">SPEED</f:facet>
+                    <p:outputLabel value="SPEED :" />
+                    <p:outputLabel id="speed" value="#{activityBean.liveDataActivity.speed} SPEED"/>
+                </p:panelGrid>
+            </h:form>
+
+            <h:form style="display: inline-block"> 
+                <p:poll interval="3" update="distance" />
+                <p:panelGrid id ="panDistance" columns="2" >
+                    <f:facet name="header">DISTANCE</f:facet>
+                    <p:outputLabel value="DISTANCE :" />
+                    <p:outputLabel id="distance" value="#{activityBean.liveDataActivity.distance} DISTANCE"/>
+                </p:panelGrid>
+            </h:form>
+
+
         </p:panelGrid>
 
-        <h:form> 
-            <p:growl id="growl" life="2000" />
 
-            <p:commandButton value="" id="play" update="growl" action="#{buttonView.buttonAction}" style="margin-right:20px;"  icon="fa fa-play" />
-            
-            <p:commandButton value="" id="stop" update="growl" action="#{buttonView.buttonAction}" style="margin-right:20px;"  icon="fa fa-stop" />
 
-        </h:form>
+
+
 
 
         <br/><br/>
 
+
+
+
+
+        <h:form id="Timedist">
+            <p:poll interval="1" update="Timedist" />
+            <p:chart type="line" model="#{detailActivityBean.lineModelTime}" style="background-color: blanchedalmond; width: 100%;height:500px"/>
+        </h:form>
+
+        <br/><br/><br/><br/>
 
         <h:form id="Powerform">
             <p:poll interval="1" update="Power" />
@@ -130,17 +137,8 @@
         </h:form>
 
         <br/><br/><br/><br/>
-        
-        <h:form id="Timedist">
-            <p:poll interval="1" update="Timedist" />
-            <p:chart type="line" model="#{detailActivityBean.lineModelTime}" style="background-color: blanchedalmond; width: 100%;height:500px"/>
-        </h:form>
-
-        <br/><br/><br/><br/>
 
 
-        <!-- Ici s'affichera la carte -->
-        <div id="map">&nbsp;</div>
 
 
     </h:body>

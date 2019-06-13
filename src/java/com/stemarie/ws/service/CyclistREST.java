@@ -190,7 +190,7 @@ public class CyclistREST {
     
     @GET
     @Path("/send/{addrMac}/{idActivity}/{pwr}/{cad}/{hrm}/{speed}/{distance}/{lati}/{longi}/{alti}")
-    public Response send(@PathParam("addrMac") String addrMac, @PathParam("idActivity") String idActivity, @PathParam("pwr") String pwr, @PathParam("cad") String cad, @PathParam("hrm") String hrm, @PathParam("speed") String speed, @PathParam("distance") String distance, @PathParam("lati") String lati, @PathParam("longi") String longi, @PathParam("alti") String alti) {
+    public Response send(@PathParam("addrMac") String addrMac, @PathParam("idActivity") String idActivity, @PathParam("pwr") String pwr, @PathParam("cad") String cad, @PathParam("hrm") String hrm, @PathParam("speed") double speed, @PathParam("distance") double distance, @PathParam("lati") String lati, @PathParam("longi") String longi, @PathParam("alti") String alti) {
 
         Response response = Response.status(400).build();
         

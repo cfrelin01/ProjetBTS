@@ -328,6 +328,11 @@ public class DetailActivityBean implements Serializable {
         return model;
     }
     
+    
+    
+    
+    
+    
      private LineChartModel initLinearModelTime(){
          
          LineChartModel model = new LineChartModel();
@@ -346,19 +351,25 @@ public class DetailActivityBean implements Serializable {
         String minAxis = "";
         String maxAxis = "";
         int compteur = 0;
+        
+        
 
         //parcourir les données de l'activité
         for (DataActivity data : listeDataActivities) {
             
-            
-            timeDist.set(sm.format(data.getTimeData()), data.getHrm());
-            //conserver le min
-            if (compteur == 0) {
-                minAxis = sm.format(data.getTimeData());
+//            System.out.println("Distance : "+Integer.valueOf(data.getDistance()));
+
+            if(data.getDistance()>0){
+                timeDist.set(sm.format(data.getTimeData()), data.getDistance());
+
+                //conserver le min
+                if (compteur == 0) {
+                    minAxis = sm.format(data.getTimeData());
+                }
+                maxAxis = sm.format(data.getTimeData());
+                //System.out.println("Ajouter le point : "+sm.format(data.getTimeData()));
+                compteur++;
             }
-            maxAxis = sm.format(data.getTimeData());
-            //System.out.println("Ajouter le point : "+sm.format(data.getTimeData()));
-            compteur++;
         }
         //System.out.println("Max axis : "+maxAxis);
 
@@ -385,6 +396,9 @@ public class DetailActivityBean implements Serializable {
          
          return model;
      }
+     
+     
+     
 
     //recupérer les data pour l'activité courante BackingBean
 //    public List<DataActivity> getListDataActivities() {
@@ -450,13 +464,13 @@ public class DetailActivityBean implements Serializable {
     }
     
     
-    public void setMaxSpeed(String maxSpeed) {
-        
-        List<DataActivity> listeDataActivities = this.activityBean.getListDataActivities();
-        DataActivity lastActivity=listeDataActivities.get(listeDataActivities.size()-1);
-        
-        this.maxSpeed=lastActivity.getSpeed();
-    }
+//    public void setMaxSpeed(String maxSpeed) {
+//        
+//        List<DataActivity> listeDataActivities = this.activityBean.getListDataActivities();
+//        DataActivity lastActivity=listeDataActivities.get(listeDataActivities.size()-1);
+//        
+//        this.maxSpeed=lastActivity.getSpeed();
+//    }
 
     
     
