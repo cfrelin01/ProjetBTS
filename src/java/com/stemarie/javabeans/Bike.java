@@ -21,7 +21,6 @@ public class Bike implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idBike;
     private String serialNum;
-    private String picture;
     private String typeBike;
 
     //gestion de la relation
@@ -42,13 +41,6 @@ public class Bike implements Serializable {
         this.serialNum = serialNum;
     }
 
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
 
     public int getIdBike() {
         return idBike;
@@ -84,7 +76,9 @@ public class Bike implements Serializable {
 
     @Override
     public String toString() {
-        return "Bike{" + "idBike=" + idBike + ", serialNum=" + serialNum + ", picture=" + picture + ", typeBike=" + typeBike + '}';
+        return "Bike{" + "idBike=" + idBike + ", serialNum=" + serialNum + ", typeBike=" + typeBike + ", computer=" + computer + ", sensor=" + sensor + '}';
     }
+
+   
 
 }

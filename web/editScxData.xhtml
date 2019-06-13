@@ -23,36 +23,28 @@
         </div>
         <br></br> 
 
-        <p:panel id="toggleable" header="Formulaire" collapsed="true" toggleable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
-            <h:form style="margin-bottom: 100px; margin-top: 50px; margin-left: 25%;margin-right: 33%" >     
+        <p:panel id="toggleable" header="Formulaire" collapsed="false" toggleable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
+            <h:form style="margin-bottom: 100px; margin-top: 50px; margin-left: 15%;margin-right: 15%" >     
                 <h:inputHidden value="#{scxDataBean.scxData.idScxData}"/>
                 <p:panelGrid id = "tableauForm" columns="4" >
-
                     <f:facet name="header">
                         Scx Data
                     </f:facet>   
-
-                    <p:outputLabel value="coefRoulement " />
-                    <p:inputText value="#{scxDataBean.scxData.coefRoulement}" id="coefRoulement" required="true" label="coefRoulement"/>  
-                    <p:outputLabel value="pressBaro " />
-                    <p:inputText value="#{scxDataBean.scxData.pressBaro}" id="pressBaro" required="true" label="pressBaro"/>
-                    <p:outputLabel value="rhoMax " />
-                    <p:inputText value="#{scxDataBean.scxData.rhoMax}" id="rhoMax" required="true" label="rhoMax"/>
-                    <p:outputLabel value="scxOpti " />
-                    <p:inputText value="#{scxDataBean.scxData.scxOpti}" id="scxOpti" required="true" label="scxOpti"/>
-                    <p:outputLabel value="temp " />
+                    <p:outputLabel value="Coeff roulement (Cr)" />
+                    <p:inputText value="#{scxDataBean.scxData.coefRoulement}" id="coefRoulement" required="true" label="coefRoulement"/> 
+                    <p:outputLabel value="ρ masse volumique (kg.m3)" />
+                    <p:inputText value="#{scxDataBean.scxData.rhoMax}" id="rhoMax" required="false" label="rhoMax"/>
+                    <p:outputLabel value="Température (°C)" />
                     <p:inputText value="#{scxDataBean.scxData.temp}" id="temp" required="true" label="temp"/>
-                    
-                   
-
+                    <p:outputLabel value="Pression atmosphérique (hPa) " />
+                    <p:inputText value="#{scxDataBean.scxData.pressBaro}" id="pressBaro" required="true" label="pressBaro"/>
+                    <p:outputLabel value="Scx Optimal (coefficient de pénétration)" />
+                    <p:inputText value="#{scxDataBean.scxData.scxOpti}" id="scxOpti" required="true" label="scxOpti"/>
 
                     <f:facet name = "footer">
-
                         <h:panelGroup style = "display:block; text-align:center">
                             <p:commandButton id = "buttonFormulaire" value = "Edit" action="#{scxDataBean.ajouter()}" ajax="false"/>
-
                         </h:panelGroup>
-
                     </f:facet>
 
                 </p:panelGrid>
@@ -68,21 +60,22 @@
                 <f:facet name="header">
                     Scx Data List
                 </f:facet>
-                <p:column  headerText="coefRoulement">
-                    <h:outputText value="#{c.coefRoulement}" />
+                <p:column  headerText="Coeff roulement (Cr)">
+                    <h:outputText value="#{c.coefRoulement}(Cr)" />
                 </p:column>
-                <p:column headerText="pressBaro">
-                    <h:outputText value="#{c.pressBaro}" />
+                <p:column headerText="ρ masse volumique (kg.m3)">
+                    <h:outputText value="#{c.rhoMax}(kg.m3)" />
                 </p:column>
-                <p:column headerText="rhoMax">
-                    <h:outputText value="#{c.rhoMax}" />
+                <p:column headerText="Température (°C)">
+                    <h:outputText value="#{c.temp}(°C)" />
                 </p:column>
-                <p:column headerText="scxOpti">
+                <p:column headerText="Pression atmosphérique (hPa)">
+                    <h:outputText value="#{c.pressBaro}(hPa)" />
+                </p:column>
+                <p:column headerText="Scx Optimal (coefficient de pénétration)">
                     <h:outputText value="#{c.scxOpti}" />
                 </p:column>
-                <p:column headerText="temp">
-                    <h:outputText value="#{c.temp}" />
-                </p:column>
+                
 
                 <p:column headerText="Action" colspan="1" >
                     <p:commandButton id = "buttonModifier"  action="#{scxDataBean.modifier(c)}" ajax="false" icon="fa fa-pencil [&#xf040;]"/>&nbsp;&nbsp;

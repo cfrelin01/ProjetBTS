@@ -40,6 +40,8 @@ public class Cyclist implements Serializable {
     private int i4Max;
     private int i5Min;
     private int i5Max;
+    private int i6Min;
+    private int i6Max;
     // img
     private String imgCyclist="";
 
@@ -212,6 +214,22 @@ public class Cyclist implements Serializable {
 
     public void setImgCyclist(String imgCyclist) {
         this.imgCyclist = imgCyclist;
+    }
+
+    public int getI6Min() {
+        return i6Min;
+    }
+
+    public void setI6Min(int i6Min) {
+        this.i6Min = i6Min;
+    }
+
+    public int getI6Max() {
+        return i6Max;
+    }
+
+    public void setI6Max(int i6Max) {
+        this.i6Max = i6Max;
     }
 
     

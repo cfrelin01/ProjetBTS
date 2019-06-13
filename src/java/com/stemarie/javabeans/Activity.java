@@ -27,7 +27,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @NamedQuery(name = "Activity.findAll", query = "SELECT a FROM Activity a")
 @Entity
-@Table(name = "activity")
 public class Activity implements Serializable {
     
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

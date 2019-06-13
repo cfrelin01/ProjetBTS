@@ -11,7 +11,7 @@
     <h:head class="w3-container" >
         <link rel="stylesheet" href="css/style.css" type="text/css"></link>
         <link rel="stylesheet" href="css/chart.css" type="text/css"></link>
-        
+
         <!-- carte openstreetMap-->
         <meta charset="utf-8"></meta>
         <!-- Nous chargeons les fichiers CDN de Leaflet. Le CSS AVANT le JS -->
@@ -50,9 +50,9 @@
                 height:400px;
             }
         </style>
-        
-        
-        
+
+
+
         <title>Activities management</title>
     </h:head>
 
@@ -75,37 +75,47 @@
                     <p:outputLabel value="PWR :" />
                     <p:outputLabel id="pwr" value="#{activityBean.liveDataActivity.pwr} Watts"/>
                 </p:panelGrid>
-        </h:form>
-    
-        <h:form style="display: inline-block "> 
+            </h:form>
+
+            <h:form style="display: inline-block "> 
                 <p:poll interval="3" update="cad" />
                 <p:panelGrid id ="panCAD" columns="2" >
                     <f:facet name="header">CAD</f:facet>
                     <p:outputLabel value="CAD :" />
                     <p:outputLabel id="cad" value="#{activityBean.liveDataActivity.cad} RPM"/>
                 </p:panelGrid>
-        </h:form>
-        
-        <h:form style="display: inline-block"> 
+            </h:form>
+
+            <h:form style="display: inline-block"> 
                 <p:poll interval="3" update="hrm" />
                 <p:panelGrid id ="panHRM" columns="2" >
                     <f:facet name="header">HRM</f:facet>
                     <p:outputLabel value="HRM :" />
                     <p:outputLabel id="hrm" value="#{activityBean.liveDataActivity.hrm} HRM"/>
                 </p:panelGrid>
-        </h:form>
+            </h:form>
         </p:panelGrid>
-           
-        
+
+        <h:form> 
+            <p:growl id="growl" life="2000" />
+
+            <p:commandButton value="" id="play" update="growl" action="#{buttonView.buttonAction}" style="margin-right:20px;"  icon="fa fa-play" />
+            
+            <p:commandButton value="" id="stop" update="growl" action="#{buttonView.buttonAction}" style="margin-right:20px;"  icon="fa fa-stop" />
+
+        </h:form>
+
+
         <br/><br/>
-        
+
+
         <h:form id="Powerform">
             <p:poll interval="1" update="Power" />
             <p:chart id="Power" type="line" model="#{detailActivityBean.lineModel}" style="background-color: blanchedalmond; width: 100%;height:500px;"/>
         </h:form>
 
         <br/><br/><br/><br/>
-       
+
 
         <h:form id="Cadence">
             <p:poll interval="1" update="Cadence" />
@@ -121,7 +131,7 @@
 
         <br/><br/><br/><br/>
 
-        
+
         <!-- Ici s'affichera la carte -->
         <div id="map">&nbsp;</div>
 

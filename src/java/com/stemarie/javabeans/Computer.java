@@ -32,7 +32,6 @@ public class Computer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idComputer;
-    private String sim;
     private String addrMac;
     private String name;
     private boolean onOff=false;
@@ -72,13 +71,7 @@ public class Computer implements Serializable {
         this.idComputer = idComputer;
     }
 
-    public String getSim() {
-        return sim;
-    }
 
-    public void setSim(String sim) {
-        this.sim = sim;
-    }
 
     public Bike getBike() {
         return bike;
@@ -106,7 +99,7 @@ public class Computer implements Serializable {
 
     @Override
     public String toString() {
-        return "Computer{" + "idComputer=" + idComputer + ", sim=" + sim + ", addrMac=" + addrMac + ", name=" + name + ", onOff=" + onOff + ", onOffTime=" + onOffTime + ", bike=" + bike + '}';
+        return "Computer{" + "idComputer=" + idComputer + ",  addrMac=" + addrMac + ", name=" + name + ", onOff=" + onOff + ", onOffTime=" + onOffTime + ", bike=" + bike + '}';
     }
     
     

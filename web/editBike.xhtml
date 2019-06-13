@@ -42,32 +42,23 @@
                     </p:selectOneMenu>
 
                     <p:outputLabel for="computer" value="µComputer:" />
-
-
                     <p:selectOneMenu id="computer" required="true" value="#{bikeBean.bike.computer.idComputer}">
                         <f:selectItem itemLabel="Veuillez choisir un compteur" itemValue="" />
                         <f:selectItems value="#{computerBean.listerComputer}" var="computer" itemLabel="#{computer.name}" itemValue="#{computer.idComputer}" />
                     </p:selectOneMenu>
 
                     <p:outputLabel  value="Sensors :" />
-
-
                     <p:selectOneMenu id="pwsensor" required="true" value="#{bikeBean.bike.sensor.idSensor}">
                         <f:selectItem itemLabel="Veuillez choisir un compteur" itemValue="" />
                         <f:selectItems value="#{sensorBean.listerSensor}" var="sensor" itemLabel="#{sensor.name}" itemValue="#{sensor.idSensor}" />
                     </p:selectOneMenu>
 
-                    <p:outputLabel value="Picture :" />
-
-                    <p:fileUpload value="#{bikeBean.bike.picture}"  id="picture" required="true" label="picture" mode="simple" skinSimple="true"/>
 
                     <f:facet name = "footer">
                         <h:panelGroup style = "display:block; text-align:center">
                             <p:commandButton id = "buttonFormulaire" value = "Valider" action="#{bikeBean.ajouter()}" ajax="false"/>
                         </h:panelGroup>
                     </f:facet>
-
-                    <p:outputLabel value="&nbsp;" /><p:outputLabel value="&nbsp;" />
 
 
                 </p:panelGrid>

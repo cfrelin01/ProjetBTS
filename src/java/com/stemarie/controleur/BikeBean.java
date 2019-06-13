@@ -77,10 +77,8 @@ public class BikeBean implements Serializable {
     }
 
     public String modifier(Bike c) {
-
         this.bike = c;
-        return "editbike.jsf";
-
+        return "editBike";
     }
 
     public Bike getBike() {

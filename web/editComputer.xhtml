@@ -35,12 +35,7 @@
                     <p:inputText value="#{computerBean.computer.name}" id="name" required="true" label="name"/>  
                     <p:outputLabel value="MAC: " />
                     <p:inputText value="#{computerBean.computer.addrMac}" id="addrMac" required="true" label="addrMac"/>  
-                    <p:outputLabel value="SIM:" />
-                    <p:inputText value="#{computerBean.computer.sim}"  id="sim" required="true" label="sim" />
-
-
-                    <p:outputLabel value="&nbsp;" /><p:outputLabel value="&nbsp;" />
-
+                  
                     <f:facet name = "footer">
                         <h:panelGroup style = "display:block; text-align:center">
                             <p:commandButton id = "buttonFormulaire" value = "Edit" action="#{computerBean.ajouter()}" ajax="false"/>
@@ -65,11 +60,7 @@
                 <p:column headerText="MAC">
                     <h:outputText value="#{c.addrMac}" />
                 </p:column>
-                <p:column headerText="SIM">
-                    <h:outputText value="#{c.sim}" />         
-                </p:column>
                 <p:column headerText="State:">
-
                     <h:graphicImage value="/resources/img/online.gif"  width="25" rendered="#{c.onOff==true}"/> 
                     <h:graphicImage value="/resources/img/offline.gif"  width="25" rendered="#{c.onOff==false}"/>         
                 </p:column>

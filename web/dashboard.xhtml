@@ -19,11 +19,11 @@
 
         <h:form id="formCyclist">
             <p:poll interval="3" update="formCyclist" /> 
-            <p:carousel value="#{cyclistBean.listeCyclists}" headerText="Cyclist " var="c"  style="margin-top: 50px" itemStyle="text-align:center" responsive="true">
+            <p:carousel value="#{cyclistBean.listeCyclists}" headerText="Cyclists " var="c"  style="margin-top: 50px" itemStyle="text-align:center" responsive="true">
                 <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                     <f:facet name="header">
                         <h:graphicImage value="/imgcyclist/#{c.imgCyclist}" width="150" rendered="#{c.imgCyclist!=''}" />
-                        <h:graphicImage value="/resources/img/anonymous.png"  width="150" rendered="#{c.imgCyclist==''}"/> 
+                        <h:graphicImage value="/resources/img/anonymous.png"  width="100" rendered="#{c.imgCyclist==''}"/> 
 
                     </f:facet>
 
@@ -51,7 +51,7 @@
 
         <h:form id="formComputer">
             <p:poll interval="3" update="formComputer" /> 
-            <p:carousel value="#{computerBean.listerComputer}" headerText="Computer " var="c"  style="margin-top: 50px" itemStyle="text-align:center" responsive="true">
+            <p:carousel value="#{computerBean.listerComputer}" headerText="Computers" var="c"  style="margin-top: 50px" itemStyle="text-align:center" responsive="true">
                 <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                     <f:facet name="header">
 
@@ -61,9 +61,6 @@
 
                     <h:outputText value="addrMac:" />
                     <h:outputText value="#{c.addrMac}" />
-
-                    <h:outputText value="Sim:" />
-                    <h:outputText value="#{c.sim}" />
 
                     <h:outputText value="onOffTime:" />
                     <h:outputText value="#{c.onOffTime}" >
@@ -81,7 +78,7 @@
         
         <h:form id="formActivity">
             <p:poll interval="3" update="formActivity" /> 
-            <p:carousel value="#{activityBean.listActivities}" headerText="Activities " var="c"  style="margin-top: 50px" itemStyle="text-align:center" responsive="true">
+            <p:carousel value="#{activityBean.listActivities}" headerText="Activities" var="c"  style="margin-top: 50px" itemStyle="text-align:center" responsive="true">
                 <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                     
                     <f:facet name="header">

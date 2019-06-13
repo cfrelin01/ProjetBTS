@@ -90,9 +90,14 @@
 
                     <p:outputLabel value="I5 Max: " />
                     <p:inputText value="#{cyclistBean.cyclist.i5Max}" id="i5Max" required="true" label="i5Max"/>
+                    
+                    
+                    <p:outputLabel value="I6 Min: " />
+                    <p:inputText value="#{cyclistBean.cyclist.i6Min}" id="i6Min" required="true" label="i6Min"/>
 
-                    <p:outputLabel value="&nbsp;" />
-                    <p:outputLabel value="&nbsp;" />   
+                    <p:outputLabel value="I6 Max: " />
+                    <p:inputText value="#{cyclistBean.cyclist.i6Max}" id="i6Max" required="true" label="i6Max"/>
+
 
                     <f:facet name = "footer">
                         <h:panelGroup style = "display:block; text-align:center">
@@ -137,16 +142,18 @@
 
                 <p:column headerText="Pma">
                     <h:outputText value="Pma(#{c.PMA}) " />
-                    <br></br>
+                    <br/>
                     <h:outputText value="I1(#{c.i1Min} / #{c.i1Max})" />
-                    <br></br>
+                    <br/>
                     <h:outputText value="I2(#{c.i2Min} / #{c.i2Max})" />
-                    <br></br>
+                    <br/>
                     <h:outputText value="I3(#{c.i3Min} / #{c.i3Max})" />
-                    <br></br>
+                    <br/>
                     <h:outputText value="I4(#{c.i4Min} / #{c.i4Max})" />
-                    <br></br>
+                    <br/>
                     <h:outputText value="I5(#{c.i5Min} / #{c.i5Max})" />
+                    <br/>
+                    <h:outputText value="I6(#{c.i6Min} / #{c.i6Max})" />
                 </p:column>
                 <p:column headerText="bike">
                     <h:outputText value="#{c.bike.serialNum} (#{c.bike.typeBike})" />
