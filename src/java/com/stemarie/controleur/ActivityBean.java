@@ -14,7 +14,7 @@ import javax.transaction.UserTransaction;
 
 /**
  *
- * @author clément FRELIN
+ * @author clément FRELIN 01 
  */
 @Named
 @SessionScoped
