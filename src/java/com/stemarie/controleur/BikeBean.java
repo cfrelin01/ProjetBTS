@@ -15,7 +15,7 @@ import javax.transaction.UserTransaction;
 
 /**
  *
- * @author clement
+ * @author clement frelin
  */
 @Named
 @RequestScoped
