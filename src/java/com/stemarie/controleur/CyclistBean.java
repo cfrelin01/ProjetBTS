@@ -19,7 +19,7 @@ import org.primefaces.model.UploadedFile;
 
 /**
  *
- * @author Clément Frelin(clement.frelin01@gmail.com)
+ * @author Clément Frelin.
  */
 @Named
 @RequestScoped
